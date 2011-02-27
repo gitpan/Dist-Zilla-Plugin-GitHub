@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.01';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.02';
 }
 
 use Moose;
@@ -13,12 +13,12 @@ with 'Dist::Zilla::Role::Releaser';
 
 has login => (
 	is      => 'ro',
-	isa     => 'Str',
+	isa     => 'Maybe[Str]',
 );
 
 has token => (
 	is   	=> 'ro',
-	isa  	=> 'Str',
+	isa  	=> 'Maybe[Str]',
 );
 
 has cpan => (
@@ -39,7 +39,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -52,7 +52,7 @@ In your F<dist.ini>:
 
 =head1 DESCRIPTION
 
-This Dist::Zilla Plugin updates the information of the GitHub repository
+This Dist::Zilla plugin updates the information of the GitHub repository
 when C<dzil release> is run.
 
 =cut
@@ -146,47 +146,6 @@ be used).
 =head1 AUTHOR
 
 Alessandro Ghedini <alexbio@cpan.org>
-
-=head1 BUGS
-
-Please report any bugs or feature requests at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-Plugin-GitHub>.
-I will be notified, and then you'll automatically be notified of progress
-on your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Dist::Zilla::Plugin::GitHub::Update
-
-You can also look for information at:
-
-=over 4
-
-=item * GitHub page
-
-L<http://github.com/AlexBio/Dist-Zilla-Plugin-GitHub>
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-Plugin-GitHub>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Dist-Zilla-Plugin-GitHub>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Dist-Zilla-Plugin-GitHub>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/>
-
-=back
-
-=head1 SEE ALSO
-
 
 =head1 LICENSE AND COPYRIGHT
 

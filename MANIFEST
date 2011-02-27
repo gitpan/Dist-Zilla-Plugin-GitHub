@@ -8,7 +8,9 @@ README
 dist.ini
 lib/Dist/Zilla/Plugin/GitHub.pm
 lib/Dist/Zilla/Plugin/GitHub/Create.pm
+lib/Dist/Zilla/Plugin/GitHub/Meta.pm
 lib/Dist/Zilla/Plugin/GitHub/Update.pm
+lib/Dist/Zilla/PluginBundle/GitHub.pm
 t/00-load.t
 t/boilerplate.t
 t/manifest.t

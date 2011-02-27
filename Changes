@@ -1,3 +1,49 @@
+==============================
+9999-99-99 99:99:99 +0000 HEAD
+==============================
+
+  commit c84bf92947071b0204d16c4656448c9728fc1bc1
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Feb 27 20:24:18 2011 +0100
+  
+    bump version
+
+  commit 8df26765c8bd2cb772ad00943495102e614d705c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Feb 27 20:54:03 2011 +0100
+  
+    allow for undef attributes 'login' and 'token'
+
+  commit b591172e7c10d78b1485bf633b54ce1381892e76
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Feb 27 20:26:19 2011 +0100
+  
+    use GitHub bundle
+
+  commit f5431352263b277f2cfb757438c50f340f11e9e8
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Feb 26 20:53:08 2011 +0100
+  
+    add @GitHub plugin bundle
+
+  commit ee4d320574a28704f278ea510c40babe141c3f4c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Feb 26 17:23:03 2011 +0100
+  
+    doc clean-up
+
+  commit 70f9666622e1aa9f2b0b93fdaa6a37c4fc4a0beb
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Feb 26 17:18:26 2011 +0100
+  
+    minor doc fixes
+
+  commit b56357e2d6b063eab852e9492f8887d8182a9846
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Feb 26 17:17:04 2011 +0100
+  
+    add GitHub::Meta plugin 
+
 ===================================
 End of changes in the last 365 days
 ===================================

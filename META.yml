@@ -15,14 +15,19 @@ meta-spec:
 name: Dist-Zilla-Plugin-GitHub
 requires:
   Dist::Zilla::Role::AfterMint: 0
+  Dist::Zilla::Role::MetaProvider: 0
+  Dist::Zilla::Role::PluginBundle::Easy: 0
   Dist::Zilla::Role::Releaser: 0
   File::Basename: 0
   HTTP::Tiny: 0
+  JSON: 0
   Moose: 0
 resources:
+  X_wiki: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/wiki
+  bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.01
+version: 0.02
 x_Dist_Zilla:
   plugins:
     -
@@ -82,9 +87,13 @@ x_Dist_Zilla:
       name: '@Basic/UploadToCPAN'
       version: 4.200003
     -
-      class: Dist::Zilla::Plugin::MetaResources
-      name: MetaResources
-      version: 4.200003
+      class: Dist::Zilla::Plugin::GitHub::Meta
+      name: '@GitHub/GitHub::Meta'
+      version: 0.02
+    -
+      class: Dist::Zilla::Plugin::GitHub::Update
+      name: '@GitHub/GitHub::Update'
+      version: 0.02
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: MetaConfig
@@ -117,10 +126,6 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Git::Push
       name: Git::Push
       version: 1.110330
-    -
-      class: Dist::Zilla::Plugin::GitHub::Update
-      name: GitHub::Update
-      version: 0.01
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'

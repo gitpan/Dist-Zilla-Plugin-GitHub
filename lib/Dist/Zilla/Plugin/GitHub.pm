@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.01';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.02';
 }
 
 use warnings;
@@ -12,7 +12,7 @@ Dist::Zilla::Plugin::GitHub - Set of Plugin for working with GitHub
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -33,6 +33,8 @@ integrate GitHub and Dist::Zilla:
 
 =item * L<Dist::Zilla::Plugin::GitHub::Update> Update GitHub repo info on release
 
+=item * L<Dist::Zilla::Plugin::GitHub::Meta> Add GitHub repo info to META.{yml,json}
+
 =back
 
 Both GitHub::Create and GitHub::Update used to be standalone modules
@@ -42,44 +44,6 @@ L<Dist::Zilla::Plugin::GithubUpdate>) that are now deprecated.
 =head1 AUTHOR
 
 Alessandro Ghedini <alexbio@cpan.org>
-
-=head1 BUGS
-
-Please report any bugs or feature requests at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-Plugin-GitHub>.
-I will be notified, and then you'll automatically be notified of progress
-on your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Dist::Zilla::Plugin::GitHub
-
-You can also look for information at:
-
-=over 4
-
-=item * GitHub page
-
-L<http://github.com/AlexBio/Dist-Zilla-Plugin-GitHub>
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-Plugin-GitHub>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Dist-Zilla-Plugin-GitHub>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Dist-Zilla-Plugin-GitHub>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/>
-
-=back
 
 =head1 LICENSE AND COPYRIGHT
 

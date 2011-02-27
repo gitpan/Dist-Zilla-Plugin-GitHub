@@ -1,36 +1,30 @@
-package Dist::Zilla::Plugin::GitHub::Create;
+package Dist::Zilla::Plugin::GitHub::Meta;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.02';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.02';
 }
 
 use Moose;
+use JSON;
 use HTTP::Tiny;
-use File::Basename;
 
 use warnings;
 use strict;
 
-with 'Dist::Zilla::Role::AfterMint';
+with 'Dist::Zilla::Role::MetaProvider';
 
 has login => (
 	is      => 'ro',
-	isa     => 'Str',
+	isa     => 'Maybe[Str]',
 );
 
 has token => (
 	is   	=> 'ro',
-	isa  	=> 'Str',
-);
-
-has public => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
-	default	=> 1
+	isa  	=> 'Maybe[Str]',
 );
 
 =head1 NAME
 
-Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
+Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
@@ -38,25 +32,24 @@ version 0.02
 
 =head1 SYNOPSIS
 
-In your F<profile.ini>:
+In your F<dist.ini>:
 
-    [GitHub::Create]
+    [GitHub::Meta]
     login  = LoginName
     token  = GitHubToken
-    public = 1
 
 =head1 DESCRIPTION
 
-This Dist::Zilla plugin creates a new git repository on GitHub.com when
-a new distribution is created with C<dzil new>.
+This Dist::Zilla plugin adds some information about the distribution's
+GitHub repository to the META.{yml,json} files.
 
 =cut
 
-sub after_mint {
+sub metadata {
 	my $self 	= shift;
 	my ($opts) 	= @_;
-	my $repo_name 	= basename($opts -> {mint_root});
 	my $base_url	= 'https://github.com/api/v2/json';
+	my $repo_name	= $self -> zilla -> name;
 	my ($login, $token);
 
 	if ($self -> login) {
@@ -73,7 +66,7 @@ sub after_mint {
 
 	chomp $login; chomp $token;
 
-	$self -> log("Creating new GitHub repository '$repo_name'");
+	$self -> log("Getting GitHub repository info");
 
 	if (!$login || !$token) {
 		$self -> log("Err: Provide valid GitHub login values");
@@ -82,24 +75,50 @@ sub after_mint {
 
 	my $http = HTTP::Tiny -> new();
 
-	my @params;
+	my $url = "$base_url/repos/show/$login/$repo_name";
 
-	push @params, "login=$login", "token=$token",
-			'values[description]'.$self -> zilla -> abstract;
-
-	push @params, "login=$login", "token=$token", "name=$repo_name",
-			'public='.$self -> public;
-
-
-	my $url 	= "$base_url/repos/create";
-	my $response	= $http -> request('POST', $url, {
-		content => join("&", @params),
-		headers => {'content-type' => 'application/x-www-form-urlencoded'}
-	});
+	my $response	= $http -> request('GET', $url);
 
 	if ($response -> {'status'} == 401) {
 		$self -> log("Err: Not authorized");
 	}
+
+	my $json_text = decode_json $response -> {'content'};
+
+	my ($git_web, $git_url, $homepage, $bugtracker, $wiki);
+
+	$git_web  = $git_url = $json_text -> {'repository'} -> {'url'};
+	$git_url  =~ s/https/git/;
+	$git_url  .= '.git';
+	$homepage = $json_text -> {'repository'} -> {'homepage'};
+
+	if ($json_text -> {'repository'} -> {'has_issues'} == JSON::true()) {
+		$bugtracker = "$git_web/issues";
+	}
+
+	if ($json_text -> {'repository'} -> {'has_wiki'} == JSON::true()) {
+		$wiki = "$git_web/wiki";
+	}
+
+	my $meta = {
+		'resources' => {
+			'repository' => {
+				'web'  => $git_web,
+				'url'  => $git_url,
+				'type' => 'git'
+			},
+
+			'homepage'   => $homepage,
+
+			'bugtracker' => {
+				'web' => $bugtracker
+			},
+
+			'x_wiki'     => $wiki,
+		}
+	};
+
+	return $meta;
 }
 
 =head1 ATTRIBUTES
@@ -120,10 +139,6 @@ value of C<github.token> from the Git configuration, to set it, type:
 
     $ git config --global github.token GitHubToken
 
-=item C<public>
-
-Create a public repository if this is '1' (default), else create a private one.
-
 =back
 
 =head1 AUTHOR
@@ -142,4 +157,4 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1; # End of Dist::Zilla::Plugin::GitHub::Create
+1; # End of Dist::Zilla::Plugin::GitHub::Meta
