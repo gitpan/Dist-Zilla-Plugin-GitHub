@@ -2,6 +2,22 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 5e7eb7d25743c4f7e4805d3cd595245f5cb5f3c4
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Mon Feb 28 22:37:44 2011 +0100
+  
+    bump (hopefully last time for today) version
+
+  commit 801f81386e05b405a068f7a0090acfaf36e1bbea
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Mon Feb 28 22:37:13 2011 +0100
+  
+    fix default values for attributes -.-'' 
+
+===============================
+2011-02-28 22:17:46 +0100 v0.03
+===============================
+
   commit 64553aed2c8ad4229eb8782e7b4aac8c4e038f9a
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Mon Feb 28 22:17:46 2011 +0100

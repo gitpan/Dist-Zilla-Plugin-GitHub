@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.03';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.04';
 }
 
 use Moose;
@@ -16,19 +16,19 @@ with 'Dist::Zilla::Role::MetaProvider';
 
 has 'homepage' => (
 	is      => 'ro',
-	isa     => 'Maybe[Bool]',
+	isa     => 'Bool',
 	default => 1
 );
 
 has 'bugs' => (
 	is      => 'ro',
-	isa     => 'Maybe[Bool]',
+	isa     => 'Bool',
 	default => 1
 );
 
 has 'wiki' => (
 	is      => 'ro',
-	isa     => 'Maybe[Bool]',
+	isa     => 'Bool',
 	default => 0
 );
 
@@ -38,7 +38,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -113,15 +113,15 @@ sub metadata {
 			}
 		};
 
-	if ($self -> homepage == 1) {
+	if ($self -> homepage && $self -> homepage == 1) {
 		$meta -> {'resources'} -> {'homepage'} = $homepage;
 	}
 
-	if ($self -> bugs == 1) {
+	if ($self -> bugs && $self -> bugs == 1) {
 		$meta -> {'resources'} -> {'bugtracker'} = { 'web' => $bugtracker };
 	}
 
-	if ($self -> wiki == 1) {
+	if ($self -> wiki && $self -> wiki == 1) {
 		$meta -> {'resources'} -> {'x_wiki'} = $wiki;
 	}
 

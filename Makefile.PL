@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
     'JSON' => '0',
     'Moose' => '0'
   },
-  'VERSION' => '0.03',
+  'VERSION' => '0.04',
   'test' => {
     'TESTS' => 't/*.t'
   }

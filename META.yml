@@ -23,8 +23,10 @@ requires:
   JSON: 0
   Moose: 0
 resources:
+  bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
+  homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.03
+version: 0.04
 x_Dist_Zilla:
   plugins:
     -
@@ -86,11 +88,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@GitHub/GitHub::Meta'
-      version: 0.02
+      version: 0.03
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@GitHub/GitHub::Update'
-      version: 0.02
+      version: 0.03
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: MetaConfig
