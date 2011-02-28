@@ -1,5 +1,5 @@
 ---
-abstract: 'Set of Plugin for working with GitHub'
+abstract: 'Set of plugins for working with GitHub'
 author:
   - 'Alessandro Ghedini <alexbio@cpan.org>'
 build_requires:
@@ -23,11 +23,8 @@ requires:
   JSON: 0
   Moose: 0
 resources:
-  X_wiki: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/wiki
-  bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
-  homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.02
+version: 0.03
 x_Dist_Zilla:
   plugins:
     -

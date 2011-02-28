@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.02';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.03';
 }
 
 use Moose;
@@ -12,17 +12,7 @@ use strict;
 
 with 'Dist::Zilla::Role::AfterMint';
 
-has login => (
-	is      => 'ro',
-	isa     => 'Str',
-);
-
-has token => (
-	is   	=> 'ro',
-	isa  	=> 'Str',
-);
-
-has public => (
+has 'public' => (
 	is   	=> 'ro',
 	isa  	=> 'Bool',
 	default	=> 1
@@ -34,15 +24,18 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
-In your F<profile.ini>:
+Configure git with your GitHub credentials:
+
+    $ git config --global github.user LoginName
+    $ git config --global github.token GitHubToken
+
+then, in your F<profile.ini>:
 
     [GitHub::Create]
-    login  = LoginName
-    token  = GitHubToken
     public = 1
 
 =head1 DESCRIPTION
@@ -57,19 +50,10 @@ sub after_mint {
 	my ($opts) 	= @_;
 	my $repo_name 	= basename($opts -> {mint_root});
 	my $base_url	= 'https://github.com/api/v2/json';
-	my ($login, $token);
 
-	if ($self -> login) {
-		$login = $self -> login;
-	} else {
-		$login = `git config github.user`;
-	}
+	my $login = `git config github.user`;
 
-	if ($self -> token) {
-		$token = $self -> token;
-	} else {
-		$token = `git config github.token`;
-	}
+	my $token = `git config github.token`;
 
 	chomp $login; chomp $token;
 

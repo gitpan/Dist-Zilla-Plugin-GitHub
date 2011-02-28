@@ -1,5 +1,5 @@
 {
-   "abstract" : "Set of Plugin for working with GitHub",
+   "abstract" : "Set of plugins for working with GitHub",
    "author" : [
       "Alessandro Ghedini <alexbio@cpan.org>"
    ],
@@ -39,18 +39,13 @@
    },
    "release_status" : "stable",
    "resources" : {
-      "bugtracker" : {
-         "web" : "https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues"
-      },
-      "homepage" : "http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git",
          "web" : "https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub"
-      },
-      "x_wiki" : "https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/wiki"
+      }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

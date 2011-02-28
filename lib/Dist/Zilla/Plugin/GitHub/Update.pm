@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.02';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.03';
 }
 
 use Moose;
@@ -9,25 +9,17 @@ use HTTP::Tiny;
 use warnings;
 use strict;
 
+extends 'Dist::Zilla::Plugin::GitHub';
+
 with 'Dist::Zilla::Role::Releaser';
 
-has login => (
-	is      => 'ro',
-	isa     => 'Maybe[Str]',
-);
-
-has token => (
-	is   	=> 'ro',
-	isa  	=> 'Maybe[Str]',
-);
-
-has cpan => (
+has 'cpan' => (
 	is   	=> 'ro',
 	isa  	=> 'Bool',
 	default => 1
 );
 
-has p3rl => (
+has 'p3rl' => (
 	is   	=> 'ro',
 	isa  	=> 'Bool',
 	default => 0
@@ -39,15 +31,19 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
-In your F<dist.ini>:
+Configure git with your GitHub credentials:
+
+    $ git config --global github.user LoginName
+    $ git config --global github.token GitHubToken
+
+then, in your F<dist.ini>:
 
     [GitHub::Update]
-    login  = LoginName
-    token  = GitHubToken
+    repo = SomeRepo
     cpan = 1
 
 =head1 DESCRIPTION
@@ -61,20 +57,11 @@ sub release {
 	my $self 	= shift;
 	my ($opts) 	= @_;
 	my $base_url	= 'https://github.com/api/v2/json';
-	my $repo_name	= $self -> zilla -> name;
-	my ($login, $token);
+	my $repo_name	= $self -> repo || $self -> zilla -> name;
 
-	if ($self -> login) {
-		$login = $self -> login;
-	} else {
-		$login = `git config github.user`;
-	}
+	my $login = `git config github.user`;
 
-	if ($self -> token) {
-		$token = $self -> token;
-	} else {
-		$token = `git config github.token`;
-	}
+	my $token = `git config github.token`;
 
 	chomp $login; chomp $token;
 
@@ -101,6 +88,7 @@ sub release {
 	}
 
 	my $url 	= "$base_url/repos/show/$login/$repo_name";
+
 	my $response	= $http -> request('POST', $url, {
 		content => join("&", @params),
 		headers => {'content-type' => 'application/x-www-form-urlencoded'}
@@ -115,19 +103,10 @@ sub release {
 
 =over
 
-=item C<login>
+=item C<repo>
 
-The GitHub login name. If not provided, will be used the value of
-C<github.user> from the Git configuration, to set it, type:
-
-    $ git config --global github.user LoginName
-
-=item C<token>
-
-The GitHub API token for the user. If not provided, will be used the
-value of C<github.token> from the Git configuration, to set it, type:
-
-    $ git config --global github.token GitHubToken
+The name of the GitHub repository. By default the dist name (from dist.ini)
+is used.
 
 =item C<cpan>
 

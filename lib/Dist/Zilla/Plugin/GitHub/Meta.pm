@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.02';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.03';
 }
 
 use Moose;
@@ -10,16 +10,26 @@ use HTTP::Tiny;
 use warnings;
 use strict;
 
+extends 'Dist::Zilla::Plugin::GitHub';
+
 with 'Dist::Zilla::Role::MetaProvider';
 
-has login => (
+has 'homepage' => (
 	is      => 'ro',
-	isa     => 'Maybe[Str]',
+	isa     => 'Maybe[Bool]',
+	default => 1
 );
 
-has token => (
-	is   	=> 'ro',
-	isa  	=> 'Maybe[Str]',
+has 'bugs' => (
+	is      => 'ro',
+	isa     => 'Maybe[Bool]',
+	default => 1
+);
+
+has 'wiki' => (
+	is      => 'ro',
+	isa     => 'Maybe[Bool]',
+	default => 0
 );
 
 =head1 NAME
@@ -28,15 +38,19 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
-In your F<dist.ini>:
+Configure git with your GitHub credentials:
+
+    $ git config --global github.user LoginName
+    $ git config --global github.token GitHubToken
+
+then, in your F<dist.ini>:
 
     [GitHub::Meta]
-    login  = LoginName
-    token  = GitHubToken
+    repo = SomeRepo
 
 =head1 DESCRIPTION
 
@@ -49,20 +63,11 @@ sub metadata {
 	my $self 	= shift;
 	my ($opts) 	= @_;
 	my $base_url	= 'https://github.com/api/v2/json';
-	my $repo_name	= $self -> zilla -> name;
-	my ($login, $token);
+	my $repo_name	= $self -> repo || $self -> zilla -> name;
 
-	if ($self -> login) {
-		$login = $self -> login;
-	} else {
-		$login = `git config github.user`;
-	}
+	my $login = `git config github.user`;
 
-	if ($self -> token) {
-		$token = $self -> token;
-	} else {
-		$token = `git config github.token`;
-	}
+	my $token = `git config github.token`;
 
 	chomp $login; chomp $token;
 
@@ -100,23 +105,25 @@ sub metadata {
 		$wiki = "$git_web/wiki";
 	}
 
-	my $meta = {
-		'resources' => {
+	my $meta -> {'resources'} = {
 			'repository' => {
 				'web'  => $git_web,
 				'url'  => $git_url,
 				'type' => 'git'
-			},
+			}
+		};
 
-			'homepage'   => $homepage,
+	if ($self -> homepage == 1) {
+		$meta -> {'resources'} -> {'homepage'} = $homepage;
+	}
 
-			'bugtracker' => {
-				'web' => $bugtracker
-			},
+	if ($self -> bugs == 1) {
+		$meta -> {'resources'} -> {'bugtracker'} = { 'web' => $bugtracker };
+	}
 
-			'x_wiki'     => $wiki,
-		}
-	};
+	if ($self -> wiki == 1) {
+		$meta -> {'resources'} -> {'x_wiki'} = $wiki;
+	}
 
 	return $meta;
 }
@@ -125,19 +132,20 @@ sub metadata {
 
 =over
 
-=item C<login>
+=item C<repo>
 
-The GitHub login name. If not provided, will be used the value of
-C<github.user> from the Git configuration, to set it, type:
+The name of the GitHub repository. By default the dist name (from dist.ini)
+is used.
 
-    $ git config --global github.user LoginName
+=item C<homepage>
 
-=item C<token>
+If set to '1' (default), the META homepage field will be set to the
+value of the homepage field set on the GitHub repository's info.
 
-The GitHub API token for the user. If not provided, will be used the
-value of C<github.token> from the Git configuration, to set it, type:
+=item C<bugs>
 
-    $ git config --global github.token GitHubToken
+If set to '1' (default), the META bugtracker web field will be set to the
+issue's page of the repository on GitHub.
 
 =back
 

@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.31;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Set of Plugin for working with GitHub',
+  'ABSTRACT' => 'Set of plugins for working with GitHub',
   'AUTHOR' => 'Alessandro Ghedini <alexbio@cpan.org>',
   'BUILD_REQUIRES' => {
     'Test::More' => '0'
@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
     'JSON' => '0',
     'Moose' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t'
   }

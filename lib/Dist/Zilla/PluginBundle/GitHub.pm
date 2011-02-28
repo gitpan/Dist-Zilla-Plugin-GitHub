@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::GitHub;
 BEGIN {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.02';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.03';
 }
 
 use Moose;
@@ -8,34 +8,52 @@ use Moose;
 use warnings;
 use strict;
 
+extends 'Dist::Zilla::Plugin::GitHub';
+
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-has login => (
+has '+repo' => (
+	lazy    => 1,
+	default => sub { $_[0] -> payload -> {repo} }
+);
+
+# GitHub::Meta
+
+has 'homepage' => (
 	is      => 'ro',
-	isa     => 'Maybe[Str]',
-	lazy    => 1,
-	default => sub { $_[0] -> payload -> {login} }
-);
-
-has token => (
-	is   	=> 'ro',
-	isa     => 'Maybe[Str]',
-	lazy    => 1,
-	default => sub { $_[0] -> payload -> {token} }
-);
-
-has cpan => (
-	is   	=> 'ro',
 	isa     => 'Bool',
 	lazy    => 1,
-	default => 1
+	default => sub { $_[0] -> payload -> {homepage} }
 );
 
-has p3rl => (
-	is   	=> 'ro',
+has 'bugs' => (
+	is      => 'ro',
 	isa     => 'Bool',
 	lazy    => 1,
-	default => 0
+	default => sub { $_[0] -> payload -> {bugs} }
+);
+
+has 'wiki' => (
+	is      => 'ro',
+	isa     => 'Bool',
+	lazy    => 1,
+	default => sub { $_[0] -> payload -> {wiki} }
+);
+
+# GitHub::Update
+
+has 'cpan' => (
+	is   	=> 'ro',
+	isa  	=> 'Bool',
+	lazy    => 1,
+	default => sub { $_[0] -> payload -> {cpan} }
+);
+
+has 'p3rl' => (
+	is   	=> 'ro',
+	isa  	=> 'Bool',
+	lazy    => 1,
+	default => sub { $_[0] -> payload -> {p3rl} }
 );
 
 =head1 NAME
@@ -44,13 +62,19 @@ Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
-In your F<dist.ini>:
+Configure git with your GitHub credentials:
+
+    $ git config --global github.user LoginName
+    $ git config --global github.token GitHubToken
+
+then, in your F<dist.ini>:
 
     [@GitHub]
+    repo = SomeRepo
 
 =head1 DESCRIPTION
 
@@ -63,15 +87,16 @@ sub configure {
 
 	$self -> add_plugins(
 		['GitHub::Meta' => {
-			login => $self -> login,
-			token => $self -> token
+			repo => defined $self -> repo ? $self -> repo : undef,
+			homepage => defined $self -> homepage ? $self -> homepage : undef,
+			bugs => defined $self -> bugs ? $self -> bugs : undef,
+			wiki => defined $self -> wiki ? $self -> wiki : undef
 		}],
 
 		['GitHub::Update' => {
-			login => $self -> login,
-			token => $self -> token,
-			cpan  => $self -> cpan,
-			p3rl  => $self -> p3rl
+			repo => defined $self -> repo ? $self -> repo : undef,
+			cpan => defined $self -> cpan ? $self -> cpan : undef,
+			p3rl => defined $self -> p3rl ? $self -> p3rl : undef
 		}]
 	);
 }
@@ -80,19 +105,10 @@ sub configure {
 
 =over
 
-=item C<login>
+=item C<repo>
 
-The GitHub login name. If not provided, will be used the value of
-C<github.user> from the Git configuration, to set it, type:
-
-    $ git config --global github.user LoginName
-
-=item C<token>
-
-The GitHub API token for the user. If not provided, will be used the
-value of C<github.token> from the Git configuration, to set it, type:
-
-    $ git config --global github.token GitHubToken
+The name of the GitHub repository. By default the dist name (from dist.ini)
+is used.
 
 =item C<cpan>
 

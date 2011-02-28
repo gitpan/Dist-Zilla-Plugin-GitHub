@@ -1,26 +1,25 @@
 package Dist::Zilla::Plugin::GitHub;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.02';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.03';
 }
+
+use Moose;
 
 use warnings;
 use strict;
 
+has 'repo' => (
+	is      => 'ro',
+	isa     => 'Maybe[Str]'
+);
+
 =head1 NAME
 
-Dist::Zilla::Plugin::GitHub - Set of Plugin for working with GitHub
+Dist::Zilla::Plugin::GitHub - Set of plugins for working with GitHub
 
 =head1 VERSION
 
-version 0.02
-
-=head1 SYNOPSIS
-
-Synopsis section
-
-    use Dist::Zilla::Plugin::GitHub;
-
-    ...
+version 0.03
 
 =head1 DESCRIPTION
 
