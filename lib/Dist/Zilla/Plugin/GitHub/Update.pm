@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.04';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.05';
 }
 
 use Moose;
@@ -31,7 +31,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 

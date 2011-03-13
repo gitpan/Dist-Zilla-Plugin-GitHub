@@ -2,6 +2,42 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit d471cb6883430723b8eb6c2e28dd4690d8e8cad0
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 16:51:02 2011 +0100
+  
+    bump version
+
+  commit 657c3070fde6c3e72b1a923e62d4da690ce26dd2
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 16:50:19 2011 +0100
+  
+    check if the project homepage is set, if not don't set the field even
+    if it is configured
+
+  commit 75b34171387f9117c1f3d8ca66a6e79be3084cf7
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 16:49:33 2011 +0100
+  
+    check if the GitHub issues tracker is used, if not don't set the
+    field even if it is configured
+
+  commit 8e36bf324cb2f1285ecda83db99ff38fa121a104
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 16:48:18 2011 +0100
+  
+    use the 'wiki' option
+
+  commit 7a576d9f37d580548aecb3e75006aa2313a4c36c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 16:42:28 2011 +0100
+  
+    update documentation 
+
+===============================
+2011-02-28 22:37:44 +0100 v0.04
+===============================
+
   commit 5e7eb7d25743c4f7e4805d3cd595245f5cb5f3c4
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Mon Feb 28 22:37:44 2011 +0100

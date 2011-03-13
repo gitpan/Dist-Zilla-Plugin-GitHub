@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::GitHub;
 BEGIN {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.04';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.05';
 }
 
 use Moose;
@@ -77,7 +77,7 @@ Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -125,6 +125,23 @@ sub configure {
 The name of the GitHub repository. By default the dist name (from dist.ini)
 is used.
 
+=item C<homepage>
+
+If set to '1' (default), the META homepage field will be set to the
+value of the homepage field set on the GitHub repository's info.
+
+=item C<wiki>
+
+If set to '1' (default '0'), the META homepage field will be set to the
+URL of the wiki of the GitHub repository, if happens to be activated (see the
+GitHub repository's C<Admin> panel).
+
+=item C<bugs>
+
+If set to '1' (default), the META bugtracker web field will be set to the
+issue's page of the repository on GitHub, if happens to be activated (see the
+GitHub repository's C<Admin> panel).
+
 =item C<cpan>
 
 If set to '1' (default), the GitHub homepage field will be set to the
@@ -138,6 +155,10 @@ This takes precedence over the C<cpan> option (if both '1', p3rl will
 be used).
 
 =back
+
+=head1 SEE ALSO
+
+L<Dist::Zilla::Plugin::GitHub::Meta>, L<Dist::Zilla::Plugin::GitHub::Update>
 
 =head1 AUTHOR
 

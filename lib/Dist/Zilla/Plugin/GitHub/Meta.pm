@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.04';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.05';
 }
 
 use Moose;
@@ -38,7 +38,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -56,6 +56,33 @@ then, in your F<dist.ini>:
 
 This Dist::Zilla plugin adds some information about the distribution's
 GitHub repository to the META.{yml,json} files.
+It currently sets the following fields:
+
+=over 4
+
+=item * C<homepage> - Project's homepage
+
+=item * C<repository> - Github repository's information
+
+=over 4
+
+=item * C<web>
+
+=item * C<url>
+
+=item * C<type>
+
+=back
+
+=item * C<bugtracker> - Github issues tracker's information
+
+=over 4
+
+=item * C<web>
+
+=back
+
+=back
 
 =cut
 
@@ -113,16 +140,15 @@ sub metadata {
 			}
 		};
 
-	if ($self -> homepage && $self -> homepage == 1) {
+	if ($self -> wiki && $self -> wiki == 1 && $wiki) {
+		$meta -> {'resources'} -> {'homepage'} = $wiki;
+	} elsif ($self -> homepage && $self -> homepage == 1 && $homepage) {
 		$meta -> {'resources'} -> {'homepage'} = $homepage;
+
 	}
 
-	if ($self -> bugs && $self -> bugs == 1) {
+	if ($self -> bugs && $self -> bugs == 1 && $bugtracker) {
 		$meta -> {'resources'} -> {'bugtracker'} = { 'web' => $bugtracker };
-	}
-
-	if ($self -> wiki && $self -> wiki == 1) {
-		$meta -> {'resources'} -> {'x_wiki'} = $wiki;
 	}
 
 	return $meta;
@@ -142,10 +168,17 @@ is used.
 If set to '1' (default), the META homepage field will be set to the
 value of the homepage field set on the GitHub repository's info.
 
+=item C<wiki>
+
+If set to '1' (default '0'), the META homepage field will be set to the
+URL of the wiki of the GitHub repository, if happens to be activated (see the
+GitHub repository's C<Admin> panel).
+
 =item C<bugs>
 
 If set to '1' (default), the META bugtracker web field will be set to the
-issue's page of the repository on GitHub.
+issue's page of the repository on GitHub, if happens to be activated (see the
+GitHub repository's C<Admin> panel).
 
 =back
 

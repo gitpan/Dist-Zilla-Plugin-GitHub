@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200003, CPAN::Meta::Converter version 2.102400'
+generated_by: 'Dist::Zilla version 4.200003, CPAN::Meta::Converter version 2.110580'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -26,7 +26,7 @@ resources:
   bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.04
+version: 0.05
 x_Dist_Zilla:
   plugins:
     -
@@ -88,11 +88,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@GitHub/GitHub::Meta'
-      version: 0.03
+      version: 0.04
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@GitHub/GitHub::Update'
-      version: 0.03
+      version: 0.04
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: MetaConfig
@@ -120,11 +120,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: Git::Tag
-      version: 1.110330
+      version: 1.110500
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: Git::Push
-      version: 1.110330
+      version: 1.110500
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
