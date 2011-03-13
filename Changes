@@ -2,6 +2,28 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 9ee911639868574a39f22bef5d19eb128aa41be1
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 17:33:08 2011 +0100
+  
+    bump version
+
+  commit 4ca90adb89ce44bb1c9dc86cad04713d108b990b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 17:15:23 2011 +0100
+  
+    force prereq on IO::Socket::SSL (neede for https GitHub URLs)
+
+  commit 44faa3ea433f59a7bf6dd4abe330c463cf638298
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Mar 13 17:13:42 2011 +0100
+  
+    fix missing equals for description field in HTTP request 
+
+===============================
+2011-03-13 16:51:02 +0100 v0.05
+===============================
+
   commit d471cb6883430723b8eb6c2e28dd4690d8e8cad0
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Sun Mar 13 16:51:02 2011 +0100

@@ -28,10 +28,11 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Role::Releaser' => '0',
     'File::Basename' => '0',
     'HTTP::Tiny' => '0',
+    'IO::Socket::SSL' => '0',
     'JSON' => '0',
     'Moose' => '0'
   },
-  'VERSION' => '0.05',
+  'VERSION' => '0.06',
   'test' => {
     'TESTS' => 't/*.t'
   }

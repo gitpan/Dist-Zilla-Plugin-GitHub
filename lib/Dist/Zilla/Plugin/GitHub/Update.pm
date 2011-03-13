@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.05';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.06';
 }
 
 use Moose;
@@ -31,7 +31,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -77,7 +77,7 @@ sub release {
 	my @params;
 
 	push @params, "login=$login", "token=$token",
-			'values[description]'.$self -> zilla -> abstract;
+			'values[description]='.$self -> zilla -> abstract;
 
 	if ($self -> p3rl == 1) {
 		my $guess_name = $repo_name;

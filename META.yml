@@ -20,13 +20,14 @@ requires:
   Dist::Zilla::Role::Releaser: 0
   File::Basename: 0
   HTTP::Tiny: 0
+  IO::Socket::SSL: 0
   JSON: 0
   Moose: 0
 resources:
   bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.05
+version: 0.06
 x_Dist_Zilla:
   plugins:
     -
@@ -88,11 +89,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@GitHub/GitHub::Meta'
-      version: 0.04
+      version: 0.05
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@GitHub/GitHub::Update'
-      version: 0.04
+      version: 0.05
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: MetaConfig
@@ -104,6 +105,14 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: AutoPrereqs
+      version: 4.200003
+    -
+      class: Dist::Zilla::Plugin::Prereqs
+      config:
+        Dist::Zilla::Plugin::Prereqs:
+          phase: runtime
+          type: requires
+      name: Prereqs
       version: 4.200003
     -
       class: Dist::Zilla::Plugin::PodVersion
@@ -146,3 +155,4 @@ x_Dist_Zilla:
     config:
       is_trial: 0
     version: 4.200003
+x_lol: lol
