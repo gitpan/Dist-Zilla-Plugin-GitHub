@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.06';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.07';
 }
 
 use Moose;
@@ -31,7 +31,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -137,5 +137,9 @@ by the Free Software Foundation; or the Artistic License.
 See http://dev.perl.org/licenses/ for more information.
 
 =cut
+
+no Moose;
+
+__PACKAGE__ -> meta -> make_immutable;
 
 1; # End of Dist::Zilla::Plugin::GitHub::Update

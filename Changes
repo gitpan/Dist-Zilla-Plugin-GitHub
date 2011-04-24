@@ -2,6 +2,40 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit ba081a5534021de5ab826cd41e8c0bac8fb868c3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Apr 24 23:14:36 2011 +0200
+  
+    bump version
+
+  commit 35cbae3133d3395b625493b698ccbeb53b61715d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Apr 24 23:14:22 2011 +0200
+  
+    use @Author::ALEXBIO dzil plugin bundle
+
+  commit bf6d062c70ffdde6ca5d0cc645683eac228b42f2
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Apr 24 23:13:38 2011 +0200
+  
+    make classes immutable
+
+  commit 84c572c5377bbe53f4955ddb67545bb14a1c190f
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Mon Mar 21 21:01:02 2011 +0100
+  
+    remove 'token' and 'login' options from GitHub::Create docs
+
+  commit b909053ac99c0e86d12f9248c66fa0fb308554a1
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Fri Mar 18 15:33:46 2011 +0100
+  
+    add GitHub::Meta and @GitHub to tests 
+
+===============================
+2011-03-13 17:33:08 +0100 v0.06
+===============================
+
   commit 9ee911639868574a39f22bef5d19eb128aa41be1
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Sun Mar 13 17:33:08 2011 +0100

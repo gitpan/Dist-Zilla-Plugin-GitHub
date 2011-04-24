@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.06';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.07';
 }
 
 use Moose;
@@ -24,7 +24,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -90,20 +90,6 @@ sub after_mint {
 
 =over
 
-=item C<login>
-
-The GitHub login name. If not provided, will be used the value of
-C<github.user> from the Git configuration, to set it, type:
-
-    $ git config --global github.user LoginName
-
-=item C<token>
-
-The GitHub API token for the user. If not provided, will be used the
-value of C<github.token> from the Git configuration, to set it, type:
-
-    $ git config --global github.token GitHubToken
-
 =item C<public>
 
 Create a public repository if this is '1' (default), else create a private one.
@@ -125,5 +111,9 @@ by the Free Software Foundation; or the Artistic License.
 See http://dev.perl.org/licenses/ for more information.
 
 =cut
+
+no Moose;
+
+__PACKAGE__ -> meta -> make_immutable;
 
 1; # End of Dist::Zilla::Plugin::GitHub::Create
