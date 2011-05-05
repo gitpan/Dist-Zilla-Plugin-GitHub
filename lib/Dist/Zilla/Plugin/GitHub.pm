@@ -1,9 +1,10 @@
 package Dist::Zilla::Plugin::GitHub;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.07';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.08';
 }
 
 use Moose;
+use HTTP::Tiny;
 
 use warnings;
 use strict;
@@ -13,18 +14,26 @@ has 'repo' => (
 	isa     => 'Maybe[Str]'
 );
 
+has 'api'  => (
+	is      => 'ro',
+	isa     => 'Str',
+	default => 'https://github.com/api/v2/json'
+);
+
 =head1 NAME
 
 Dist::Zilla::Plugin::GitHub - Set of plugins for working with GitHub
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 DESCRIPTION
 
-The following is a list of Plugin in this distribution to help you
-integrate GitHub and Dist::Zilla:
+B<Dist::Zilla::Plugin::GitHub> ships a bunch of L<Dist::Zilla> plugins, aimed at
+easing the maintainance of Dist::Zilla-managed modules with L<GitHub|https://github.com>.
+
+The following is the list of the plugins shipped in this distribution:
 
 =over 4
 
@@ -36,8 +45,10 @@ integrate GitHub and Dist::Zilla:
 
 =back
 
-Both GitHub::Create and GitHub::Update used to be standalone modules
-(named respectively L<Dist::Zilla::Plugin::GithubCreate> and
+=head1 ACKNOWLEDGMENTS
+
+Both the GitHub::Create and the GitHub::Update modules used to be standalone
+modules (named respectively L<Dist::Zilla::Plugin::GithubCreate> and
 L<Dist::Zilla::Plugin::GithubUpdate>) that are now deprecated.
 
 =head1 AUTHOR

@@ -1,10 +1,9 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.07';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.08';
 }
 
 use Moose;
-use HTTP::Tiny;
 use File::Basename;
 
 use warnings;
@@ -24,7 +23,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -49,13 +48,9 @@ sub after_mint {
 	my $self 	= shift;
 	my ($opts) 	= @_;
 	my $repo_name 	= basename($opts -> {mint_root});
-	my $base_url	= 'https://github.com/api/v2/json';
 
-	my $login = `git config github.user`;
-
-	my $token = `git config github.token`;
-
-	chomp $login; chomp $token;
+	my $login = `git config github.user`;  chomp $login;
+	my $token = `git config github.token`; chomp $token;
 
 	$self -> log("Creating new GitHub repository '$repo_name'");
 
@@ -66,16 +61,13 @@ sub after_mint {
 
 	my $http = HTTP::Tiny -> new();
 
-	my @params;
-
-	push @params, "login=$login", "token=$token",
+	push my @params, "login=$login", "token=$token",
 			'values[description]'.$self -> zilla -> abstract;
 
 	push @params, "login=$login", "token=$token", "name=$repo_name",
 			'public='.$self -> public;
 
-
-	my $url 	= "$base_url/repos/create";
+	my $url 	= $self -> api.'/repos/create';
 	my $response	= $http -> request('POST', $url, {
 		content => join("&", @params),
 		headers => {'content-type' => 'application/x-www-form-urlencoded'}

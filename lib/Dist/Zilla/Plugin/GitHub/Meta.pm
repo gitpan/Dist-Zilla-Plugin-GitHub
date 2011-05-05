@@ -1,11 +1,10 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.07';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.08';
 }
 
 use Moose;
 use JSON;
-use HTTP::Tiny;
 
 use warnings;
 use strict;
@@ -38,7 +37,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -55,30 +54,44 @@ then, in your F<dist.ini>:
 =head1 DESCRIPTION
 
 This Dist::Zilla plugin adds some information about the distribution's
-GitHub repository to the META.{yml,json} files.
+GitHub repository to the META.{yml,json} files, using the official L<CPAN::Meta>
+specification.
+
 It currently sets the following fields:
 
 =over 4
 
-=item * C<homepage> - Project's homepage
+=item * C<homepage>
 
-=item * C<repository> - Github repository's information
+The official home of this project on the web, taken from the GitHub repository
+info. If the C<bugs> option is set to '0' this will be skipped.
+
+=item * C<repository>
 
 =over 4
 
 =item * C<web>
+
+URL pointing to the GitHub page of the project.
 
 =item * C<url>
 
+URL pointing to the GitHub repository (C<git://...>).
+
 =item * C<type>
+
+This is set to C<git> by default.
 
 =back
 
-=item * C<bugtracker> - Github issues tracker's information
+=item * C<bugtracker>
 
 =over 4
 
 =item * C<web>
+
+URL pointing to the GitHub issues page of the project. If the C<bugs> option is
+set to '0' or the issues are disabled in the GitHub repository, this will be skipped.
 
 =back
 
@@ -89,26 +102,19 @@ It currently sets the following fields:
 sub metadata {
 	my $self 	= shift;
 	my ($opts) 	= @_;
-	my $base_url	= 'https://github.com/api/v2/json';
 	my $repo_name	= $self -> repo || $self -> zilla -> name;
 
-	my $login = `git config github.user`;
-
-	my $token = `git config github.token`;
-
-	chomp $login; chomp $token;
+	my $login = `git config github.user`; chomp $login;
 
 	$self -> log("Getting GitHub repository info");
 
-	if (!$login || !$token) {
+	if (!$login) {
 		$self -> log("Err: Provide valid GitHub login values");
 		return;
 	}
 
-	my $http = HTTP::Tiny -> new();
-
-	my $url = "$base_url/repos/show/$login/$repo_name";
-
+	my $http	= HTTP::Tiny -> new();
+	my $url		= $self -> api."/repos/show/$login/$repo_name";
 	my $response	= $http -> request('GET', $url);
 
 	if ($response -> {'status'} == 401) {
@@ -133,12 +139,12 @@ sub metadata {
 	}
 
 	my $meta -> {'resources'} = {
-			'repository' => {
-				'web'  => $git_web,
-				'url'  => $git_url,
-				'type' => 'git'
-			}
-		};
+		'repository' => {
+			'web'  => $git_web,
+			'url'  => $git_url,
+			'type' => 'git'
+		}
+	};
 
 	if ($self -> wiki && $self -> wiki == 1 && $wiki) {
 		$meta -> {'resources'} -> {'homepage'} = $wiki;

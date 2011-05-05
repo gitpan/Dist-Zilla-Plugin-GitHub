@@ -2,6 +2,52 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 2a330e28fc77477814207a906a051b6d4bf480d8
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Thu May 5 19:56:05 2011 +0200
+  
+    bump version
+
+  commit 64b5ebe55e8fda904515ecd577ebb6960c255c4c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Thu May 5 19:50:05 2011 +0200
+  
+    use HTTP::Tiny once in GitHub.pm
+
+  commit 3b29c28bde084791dbc459967920ece1bc86118a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Thu May 5 19:47:35 2011 +0200
+  
+    improve distribution description
+
+  commit 962c986499a72b90d7a860149e579b5dcf050955
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Thu May 5 19:42:09 2011 +0200
+  
+    move modules rename notice to the ACKNOWLEDGMENTS section
+
+  commit aa363a2952638edf848fb10c3abf94890398dace
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Thu May 5 19:31:53 2011 +0200
+  
+    improve GitHub::Meta docs
+
+  commit af954dd0e07d1e8802ecbe5001a68e49886e3b07
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Thu May 5 18:54:21 2011 +0200
+  
+    code clean-up
+
+  commit 37db2c40a0241024c5a72263f97a505f1ca4a6cd
+  Author: Ricardo Signes <rjbs@cpan.org>
+  Date:   Mon May 2 23:32:55 2011 +0800
+  
+    token (for login) is not needed for Meta plugin 
+
+===============================
+2011-04-24 23:19:02 +0200 v0.07
+===============================
+
   commit ba081a5534021de5ab826cd41e8c0bac8fb868c3
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Sun Apr 24 23:14:36 2011 +0200
