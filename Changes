@@ -2,6 +2,28 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 9dbf48ed59d9d1ea76b9f4b99227118607fa4616
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Fri Jun 3 21:29:46 2011 +0200
+  
+    bump version
+
+  commit 5f2d450561cbb7807db7fd1b0a39ac8df3e99d0b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Fri Jun 3 21:29:32 2011 +0200
+  
+    also Create.pm extends GitHub.pm
+
+  commit 752ba02eef0713b910a209bbfb94766d7fa1352a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Thu May 5 22:33:02 2011 +0200
+  
+    fix dumb copy-paste error in Meta plugin doc 
+
+===============================
+2011-05-05 19:56:05 +0200 v0.08
+===============================
+
   commit 2a330e28fc77477814207a906a051b6d4bf480d8
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Thu May 5 19:56:05 2011 +0200

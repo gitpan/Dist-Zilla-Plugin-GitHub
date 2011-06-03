@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,65 +27,65 @@ resources:
   bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.08
+version: 0.09
 x_Dist_Zilla:
   plugins:
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@Author::ALEXBIO/@Basic/GatherDir'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@Author::ALEXBIO/@Basic/PruneCruft'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@Author::ALEXBIO/@Basic/ManifestSkip'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@Author::ALEXBIO/@Basic/MetaYAML'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::License
       name: '@Author::ALEXBIO/@Basic/License'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::Readme
       name: '@Author::ALEXBIO/@Basic/Readme'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::ExtraTests
       name: '@Author::ALEXBIO/@Basic/ExtraTests'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@Author::ALEXBIO/@Basic/ExecDir'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@Author::ALEXBIO/@Basic/ShareDir'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@Author::ALEXBIO/@Basic/MakeMaker'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@Author::ALEXBIO/@Basic/Manifest'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@Author::ALEXBIO/@Basic/TestRelease'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@Author::ALEXBIO/@Basic/ConfirmRelease'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@Author::ALEXBIO/@Basic/UploadToCPAN'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@Author::ALEXBIO/@GitHub/GitHub::Meta'
@@ -97,23 +97,23 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@Author::ALEXBIO/MetaConfig'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@Author::ALEXBIO/MetaJSON'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@Author::ALEXBIO/AutoPrereqs'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::PodVersion
       name: '@Author::ALEXBIO/PodVersion'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@Author::ALEXBIO/PkgVersion'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::ChangelogFromGit
       name: '@Author::ALEXBIO/ChangelogFromGit'
@@ -121,11 +121,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@Author::ALEXBIO/Git::Tag'
-      version: 1.110500
+      version: 1.111460
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@Author::ALEXBIO/Git::Push'
-      version: 1.110500
+      version: 1.111460
     -
       class: Dist::Zilla::Plugin::InstallRelease
       name: '@Author::ALEXBIO/InstallRelease'
@@ -141,33 +141,33 @@ x_Dist_Zilla:
           phase: runtime
           type: requires
       name: Prereqs
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: 4.200006
+      version: 4.200007
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: 4.200006
+      version: 4.200007
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: 0
-    version: 4.200006
+    version: 4.200007

@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.08';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.09';
 }
 
 use Moose;
@@ -37,7 +37,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -64,7 +64,7 @@ It currently sets the following fields:
 =item * C<homepage>
 
 The official home of this project on the web, taken from the GitHub repository
-info. If the C<bugs> option is set to '0' this will be skipped.
+info. If the C<homepage> option is set to '0' this will be skipped.
 
 =item * C<repository>
 
