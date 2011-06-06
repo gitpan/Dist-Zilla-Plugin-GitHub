@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::GitHub;
 BEGIN {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.09';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.10';
 }
 
 use Moose;
@@ -71,13 +71,23 @@ has 'p3rl' => (
 		}
 );
 
+has 'metacpan' => (
+	is   	=> 'ro',
+	isa  	=> 'Bool',
+	lazy    => 1,
+	default => sub {
+			defined $_[0] -> payload -> {metacpan} ?
+				$_[0] -> payload -> {metacpan} : 0
+		}
+);
+
 =head1 NAME
 
 Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -111,7 +121,8 @@ sub configure {
 		['GitHub::Update' => {
 			repo => $self -> repo,
 			cpan => $self -> cpan,
-			p3rl => $self -> p3rl
+			p3rl => $self -> p3rl,
+			metacpan => $self -> metacpan
 		}]
 	);
 }
