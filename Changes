@@ -2,6 +2,28 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 273759106c32d8ece9f334ae06b0fb2dd8eb37c4
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Aug 6 21:13:14 2011 +0200
+  
+    bump version
+
+  commit 6dfc5810d4923d3c0198eedebf810c414a9b0f31
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Aug 6 20:33:00 2011 +0200
+  
+    automatically add git remote (closes: #3)
+
+  commit 856cd8611274aa2ed4e2a36a3cd6120045a8465d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Aug 6 15:52:54 2011 +0200
+  
+    abort on GitHub error (closes: #2) 
+
+===============================
+2011-06-06 19:29:46 +0200 v0.10
+===============================
+
   commit 66b6c079876aede859869178c3f1aa411c17b296
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Mon Jun 6 19:29:46 2011 +0200

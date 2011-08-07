@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
-BEGIN {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.10';
+{
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.11';
 }
 
 use Moose;
@@ -37,7 +37,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
@@ -122,6 +122,11 @@ sub metadata {
 	}
 
 	my $json_text = decode_json $response -> {'content'};
+
+	if ($json_text -> {'error'} && $json_text -> {'error'} ne "") {
+		$self -> log("Err: ", $json_text -> {'error'});
+		return;
+	}
 
 	my ($git_web, $git_url, $homepage, $bugtracker, $wiki);
 
