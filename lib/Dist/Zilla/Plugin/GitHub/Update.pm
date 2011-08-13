@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.11';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.12';
 }
 
 use Moose;
@@ -36,7 +36,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
@@ -98,8 +98,14 @@ sub release {
 		headers => {'content-type' => 'application/x-www-form-urlencoded'}
 	});
 
+	if ($response -> {'success'} eq '') {
+		$self -> log("Err: Can't connect to GitHub.com");
+		return;
+	}
+
 	if ($response -> {'status'} == 401) {
 		$self -> log("Err: Not authorized");
+		return;
 	}
 }
 

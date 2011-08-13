@@ -2,6 +2,28 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit eb6dc18ab3ba6e44e7c5513aea1971dd6787ed8b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Aug 13 14:54:30 2011 +0200
+  
+    bump version
+
+  commit ab0ae4c814a9fc66f5e00915f7eb9012625803f3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Aug 13 14:43:17 2011 +0200
+  
+    return on error
+
+  commit 01d3007cd37d59e1ccf6dac0bd64a8120b9a01ed
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sat Aug 13 14:42:35 2011 +0200
+  
+    check for connection errors (closes: #4) 
+
+===============================
+2011-08-06 21:13:14 +0200 v0.11
+===============================
+
   commit 273759106c32d8ece9f334ae06b0fb2dd8eb37c4
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Sat Aug 6 21:13:14 2011 +0200
