@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::GitHub;
 {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.12';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.13';
 }
 
 use Moose;
@@ -49,6 +49,16 @@ has 'wiki' => (
 		}
 );
 
+has 'fork' => (
+	is      => 'ro',
+	isa     => 'Bool',
+	lazy    => 1,
+	default => sub {
+			defined $_[0] -> payload -> {bugs} ?
+				$_[0] -> payload -> {bugs} : 1
+		}
+);
+
 # GitHub::Update
 
 has 'cpan' => (
@@ -87,7 +97,7 @@ Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 
@@ -115,7 +125,8 @@ sub configure {
 			repo => $self -> repo,
 			homepage => $self -> homepage,
 			bugs => $self -> bugs,
-			wiki => $self -> wiki
+			wiki => $self -> wiki,
+			fork => $self -> fork
 		}],
 
 		['GitHub::Update' => {
@@ -152,6 +163,12 @@ GitHub repository's C<Admin> panel).
 If set to '1' (default), the META bugtracker web field will be set to the
 issue's page of the repository on GitHub, if happens to be activated (see the
 GitHub repository's C<Admin> panel).
+
+=item C<fork>
+
+If set to '1' (default), and if the repository is a GitHub fork of another
+repository, this option will make all the information be taken from the original
+repository instead of the forked one.
 
 =item C<cpan>
 

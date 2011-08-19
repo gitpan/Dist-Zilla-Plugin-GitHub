@@ -2,6 +2,22 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit a3f9db665ff66979c68aba827c21554c124d7631
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Fri Aug 19 16:44:11 2011 +0200
+  
+    bump version
+
+  commit b316040f8b1cec05d2db0a12205b73e586eec84c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Fri Aug 19 16:00:33 2011 +0200
+  
+    automatically point to original repo if forked (closes: #5) 
+
+===============================
+2011-08-13 14:54:30 +0200 v0.12
+===============================
+
   commit eb6dc18ab3ba6e44e7c5513aea1971dd6787ed8b
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Sat Aug 13 14:54:30 2011 +0200

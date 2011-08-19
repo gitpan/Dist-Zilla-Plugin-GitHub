@@ -30,9 +30,11 @@ my %WriteMakefileArgs = (
     'HTTP::Tiny' => '0',
     'IO::Socket::SSL' => '0',
     'JSON' => '0',
-    'Moose' => '0'
+    'Moose' => '0',
+    'strict' => '0',
+    'warnings' => '0'
   },
-  'VERSION' => '0.12',
+  'VERSION' => '0.13',
   'test' => {
     'TESTS' => 't/*.t'
   }
