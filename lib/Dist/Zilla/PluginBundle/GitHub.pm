@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::GitHub;
 {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.13';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.14';
 }
 
 use Moose;
@@ -97,7 +97,7 @@ Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 
@@ -181,6 +181,13 @@ If set to '1' (default '0'), the GitHub homepage field will be set to the
 p3rl.org shortened URL (e.g. C<http://p3rl.org/My::Module>).
 This takes precedence over the C<cpan> option (if both '1', p3rl will
 be used).
+
+=item C<metacpan>
+
+If set to '1' (default '0'), the GitHub homepage field will be set to the 
+metacpan.org distribution URL (e.g. /release/My-Module). 
+This takes precedence over the cpan and p3rl options (if all three '1', 
+metacpan will be used).
 
 =back
 

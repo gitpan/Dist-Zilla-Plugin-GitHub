@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub;
 {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.13';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.14';
 }
 
 use Moose;
@@ -26,7 +26,7 @@ Dist::Zilla::Plugin::GitHub - Set of plugins for working with GitHub
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 DESCRIPTION
 

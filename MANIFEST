@@ -11,7 +11,6 @@ lib/Dist/Zilla/Plugin/GitHub/Create.pm
 lib/Dist/Zilla/Plugin/GitHub/Meta.pm
 lib/Dist/Zilla/Plugin/GitHub/Update.pm
 lib/Dist/Zilla/PluginBundle/GitHub.pm
-t/00-load.t
-t/boilerplate.t
-t/manifest.t
-t/pod.t
+t/00-compile.t
+t/release-check-manifest.t
+t/release-pod-syntax.t

@@ -9,34 +9,36 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Set of plugins for working with GitHub',
-  'AUTHOR' => 'Alessandro Ghedini <alexbio@cpan.org>',
-  'BUILD_REQUIRES' => {
-    'Test::More' => '0'
+  "ABSTRACT" => "Set of plugins for working with GitHub",
+  "AUTHOR" => "Alessandro Ghedini <alexbio\@cpan.org>",
+  "BUILD_REQUIRES" => {
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "Test::More" => 0
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Dist-Zilla-Plugin-GitHub',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Dist::Zilla::Plugin::GitHub',
-  'PREREQ_PM' => {
-    'Dist::Zilla::Role::AfterMint' => '0',
-    'Dist::Zilla::Role::MetaProvider' => '0',
-    'Dist::Zilla::Role::PluginBundle::Easy' => '0',
-    'Dist::Zilla::Role::Releaser' => '0',
-    'File::Basename' => '0',
-    'HTTP::Tiny' => '0',
-    'IO::Socket::SSL' => '0',
-    'JSON' => '0',
-    'Moose' => '0',
-    'strict' => '0',
-    'warnings' => '0'
+  "DISTNAME" => "Dist-Zilla-Plugin-GitHub",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Dist::Zilla::Plugin::GitHub",
+  "PREREQ_PM" => {
+    "Dist::Zilla::Role::AfterMint" => 0,
+    "Dist::Zilla::Role::MetaProvider" => 0,
+    "Dist::Zilla::Role::PluginBundle::Easy" => 0,
+    "Dist::Zilla::Role::Releaser" => 0,
+    "File::Basename" => 0,
+    "HTTP::Tiny" => 0,
+    "IO::Socket::SSL" => 0,
+    "JSON" => 0,
+    "Moose" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  'VERSION' => '0.13',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.14",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

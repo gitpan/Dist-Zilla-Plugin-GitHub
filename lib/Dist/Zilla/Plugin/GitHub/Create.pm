@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.13';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.14';
 }
 
 use Moose;
@@ -25,13 +25,19 @@ has 'remote' => (
 	default	=> 'origin'
 );
 
+has 'prompt' => (
+        is      => 'ro',
+        isa     => 'Bool',
+        default => 0
+);
+
 =head1 NAME
 
 Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 
@@ -58,6 +64,9 @@ repository's private URL. See L</"ADDING REMOTE"> for more info.
 sub after_mint {
 	my $self 	= shift;
 	my ($opts) 	= @_;
+
+        return if $self->prompt() and not $self->_confirm();
+
 	my $repo_name 	= basename($opts -> {mint_root});
 
 	my $login = `git config github.user`;  chomp $login;
@@ -91,7 +100,7 @@ sub after_mint {
 	my $git_dir = $opts -> {mint_root}."/.git";
 	my $rem_ref = $git_dir."/refs/remotes/".$self -> remote;
 
-	if (!-d $rem_ref) {
+	if ((-d $git_dir) && (!-d $rem_ref)) {
 		my $remote_url = "git\@github.com:/$login/$repo_name.git";
 
 		$self -> log("Setting GitHub remote '".$self -> remote."'");
@@ -103,13 +112,28 @@ sub after_mint {
 	}
 }
 
+sub _confirm {
+    my ($self) = @_;
+
+    my $dist = $self->zilla->name();
+    my $prompt = "Shall I create a GitHub repository for $dist?";
+    return $self->zilla->chrome->prompt_yn($prompt, {default => 1} );
+
+}
+
 =head1 ATTRIBUTES
 
 =over
 
+=item C<prompt>
+
+Prompt for confirmation before creating a GitHub repository if this option is
+set to true (default is false).
+
 =item C<public>
 
-Create a public repository if this is '1' (default), else create a private one.
+Create a public repository if this option is set to true (default), otherwise
+create a private repository.
 
 =item C<remote>
 
