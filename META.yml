@@ -3,13 +3,16 @@ abstract: 'Set of plugins for working with GitHub'
 author:
   - 'Alessandro Ghedini <alexbio@cpan.org>'
 build_requires:
+  Carp: 0
   File::Find: 0
   File::Temp: 0
-  Test::More: 0
+  Scalar::Util: 0
+  Test::More: 0.94
+  perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Dist::Zilla version 4.300009, CPAN::Meta::Converter version 2.120630'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -31,89 +34,93 @@ resources:
   bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.14
+version: 0.15
 x_Dist_Zilla:
   plugins:
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@Author::ALEXBIO/GatherDir'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@Author::ALEXBIO/PruneCruft'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@Author::ALEXBIO/ManifestSkip'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@Author::ALEXBIO/MetaYAML'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::License
       name: '@Author::ALEXBIO/License'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Readme
       name: '@Author::ALEXBIO/Readme'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ExtraTests
       name: '@Author::ALEXBIO/ExtraTests'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@Author::ALEXBIO/ExecDir'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@Author::ALEXBIO/ShareDir'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@Author::ALEXBIO/Manifest'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@Author::ALEXBIO/TestRelease'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@Author::ALEXBIO/ConfirmRelease'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@Author::ALEXBIO/MakeMaker'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@Author::ALEXBIO/@GitHub/GitHub::Meta'
-      version: 0.13
+      version: 0.15
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@Author::ALEXBIO/@GitHub/GitHub::Update'
-      version: 0.13
+      version: 0.15
+    -
+      class: Dist::Zilla::Plugin::Git::NextVersion
+      name: '@Author::ALEXBIO/Git::NextVersion'
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@Author::ALEXBIO/MetaConfig'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@Author::ALEXBIO/MetaJSON'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@Author::ALEXBIO/AutoPrereqs'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::PodVersion
       name: '@Author::ALEXBIO/PodVersion'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@Author::ALEXBIO/PkgVersion'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ChangelogFromGit
       name: '@Author::ALEXBIO/ChangelogFromGit'
@@ -129,19 +136,23 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Author::ALEXBIO/PodSyntaxTests'
-      version: 4.300005
+      version: 4.300009
+    -
+      class: Dist::Zilla::Plugin::ReportVersions
+      name: '@Author::ALEXBIO/ReportVersions'
+      version: 1.110730
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@Author::ALEXBIO/Git::Tag'
-      version: 1.113220
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@Author::ALEXBIO/Git::Push'
-      version: 1.113220
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@Author::ALEXBIO/UploadToCPAN'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::InstallRelease
       name: '@Author::ALEXBIO/InstallRelease'
@@ -149,7 +160,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Clean
       name: '@Author::ALEXBIO/Clean'
-      version: 0.02
+      version: 0.03
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -157,33 +168,33 @@ x_Dist_Zilla:
           phase: runtime
           type: requires
       name: Prereqs
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: 4.300005
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: 4.300005
+      version: 4.300009
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: 0
-    version: 4.300005
+    version: 4.300009

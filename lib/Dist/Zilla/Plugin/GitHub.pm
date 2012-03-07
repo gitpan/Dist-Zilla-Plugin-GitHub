@@ -1,13 +1,13 @@
 package Dist::Zilla::Plugin::GitHub;
 {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.14';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.15';
 }
 
 use Moose;
 use HTTP::Tiny;
 
-use warnings;
 use strict;
+use warnings;
 
 has 'repo' => (
 	is      => 'ro',
@@ -26,7 +26,7 @@ Dist::Zilla::Plugin::GitHub - Set of plugins for working with GitHub
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 
