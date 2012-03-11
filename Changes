@@ -1,9 +1,49 @@
 ==================================================
-Changes from 2011-03-08 00:00:00 +0000 to present.
+Changes from 2011-03-12 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.15 at 2012-03-07 11:34:08 +0000
+version 0.16 at 2012-03-11 15:45:29 +0000
+-----------------------------------------
+
+  Change: 86e791a2695186dacec9d78f2bf18986c9dd3b52
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-11 15:32:32 +0000
+
+    wrap long lines and remove trailing whitespace 
+
+  Change: 6350d1855ed99b017664d6a6957fc3e9df89f193
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-11 15:23:51 +0000
+
+    Meta.pm: remove notice about GitHub token in docs 
+
+  Change: 6319c1de056e2ed1a74f726d6671b3e6989b6395
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-11 15:22:36 +0000
+
+    all: move some code to GitHub.pm 
+
+  Change: d173873fda3743d6c732522cab9fdb2afaaa777a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-11 15:22:31 +0000
+
+    {Create,Update}.pm: add support for login with password 
+
+  Change: 7ce5d97db61cfa38861c3694a274db62e359886d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-11 14:12:49 +0000
+
+    {Create,Update}.pm: deprecate token login 
+
+  Change: 62fd21a9bdd5c87390e562a104f3e784046bcbb7
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-07 12:36:54 +0000
+
+    PluginBundle/GitHub.pm: update attributes descriptions 
+
+-----------------------------------------
+version 0.15 at 2012-03-07 11:26:30 +0000
 -----------------------------------------
 
   Change: 097c593ea950bc7a222e679d2db643fec5625b08
@@ -337,5 +377,5 @@ version 0.05 at 2011-03-13 15:51:02 +0000
     update documentation 
 
 ================================================
-Plus 4 releases after 2011-03-08 00:00:00 +0000.
+Plus 4 releases after 2011-03-12 00:00:00 +0000.
 ================================================

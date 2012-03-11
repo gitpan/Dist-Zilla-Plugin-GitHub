@@ -34,11 +34,13 @@ my %WriteMakefileArgs = (
     "HTTP::Tiny" => 0,
     "IO::Socket::SSL" => 0,
     "JSON" => 0,
+    "MIME::Base64" => 0,
     "Moose" => 0,
+    "Term::ReadKey" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.15",
+  "VERSION" => "0.16",
   "test" => {
     "TESTS" => "t/*.t"
   }

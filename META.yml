@@ -27,14 +27,16 @@ requires:
   HTTP::Tiny: 0
   IO::Socket::SSL: 0
   JSON: 0
+  MIME::Base64: 0
   Moose: 0
+  Term::ReadKey: 0
   strict: 0
   warnings: 0
 resources:
   bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
-  homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GitHub/
+  homepage: http://metacpan.org/release/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.15
+version: 0.16
 x_Dist_Zilla:
   plugins:
     -
@@ -92,11 +94,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@Author::ALEXBIO/@GitHub/GitHub::Meta'
-      version: 0.15
+      version: 0.16
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@Author::ALEXBIO/@GitHub/GitHub::Update'
-      version: 0.15
+      version: 0.16
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@Author::ALEXBIO/Git::NextVersion'
@@ -124,7 +126,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::ChangelogFromGit
       name: '@Author::ALEXBIO/ChangelogFromGit'
-      version: 0.003
+      version: 0.004
     -
       class: Dist::Zilla::Plugin::Test::Compile
       name: '@Author::ALEXBIO/Test::Compile'

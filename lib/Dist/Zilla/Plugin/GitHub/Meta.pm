@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.15';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.16';
 }
 
 use Moose;
@@ -43,14 +43,13 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 
 Configure git with your GitHub credentials:
 
     $ git config --global github.user LoginName
-    $ git config --global github.token GitHubToken
 
 then, in your F<dist.ini>:
 
@@ -119,12 +118,7 @@ sub metadata {
 				$self -> zilla -> name;
 	my $offline	= 0;
 
-	my $login = `git config github.user`; chomp $login;
-
-	if (!$login) {
-		$self -> log("Err: Provide valid GitHub login values");
-		return;
-	}
+	my ($login, undef, undef)  = $self -> _get_credentials(1);
 
 	my $http	= HTTP::Tiny -> new;
 
@@ -138,8 +132,10 @@ sub metadata {
 
 	$self -> log("Using offline repository information") if $offline;
 
-	if (!$offline && $json_text -> {'repository'} -> {'fork'} == JSON::true() && $self -> fork == 1) {
-		my $url		= $self -> api."/repos/show/".$json_text -> {'repository'} -> {'parent'};
+	if (!$offline && $json_text -> {'repository'}
+			-> {'fork'} == JSON::true() && $self -> fork == 1) {
+		my $url		= $self -> api."/repos/show/".$json_text
+			-> {'repository'} -> {'parent'};
 		my $response	= $http -> request('GET', $url);
 
 		$json_text = check_response($self, $response);
@@ -148,16 +144,24 @@ sub metadata {
 
 	my ($git_web, $git_url, $homepage, $bugtracker, $wiki);
 
-	$git_web  = $git_url = $offline ? "https://github.com/$login/$repo_name" : $json_text -> {'repository'} -> {'url'};
+	$git_web  = $git_url = $offline			?
+		"https://github.com/$login/$repo_name"	:
+		$json_text -> {'repository'} -> {'url'};
+
 	$git_url  =~ s/https/git/;
 	$git_url  .= '.git';
-	$homepage = $offline ? undef : $json_text -> {'repository'} -> {'homepage'};
 
-	if (!$offline && $json_text -> {'repository'} -> {'has_issues'} == JSON::true()) {
+	$homepage = $offline	?
+		undef		:
+		$json_text -> {'repository'} -> {'homepage'};
+
+	if (!$offline && $json_text -> {'repository'}
+			-> {'has_issues'} == JSON::true()) {
 		$bugtracker = "$git_web/issues";
 	}
 
-	if (!$offline && $json_text -> {'repository'} -> {'has_wiki'} == JSON::true()) {
+	if (!$offline && $json_text -> {'repository'}
+			-> {'has_wiki'} == JSON::true()) {
 		$wiki = "$git_web/wiki";
 	}
 
@@ -177,7 +181,8 @@ sub metadata {
 	}
 
 	if ($self -> bugs && $self -> bugs == 1 && $bugtracker) {
-		$meta -> {'resources'} -> {'bugtracker'} = { 'web' => $bugtracker };
+		$meta -> {'resources'} -> {'bugtracker'} =
+			{ 'web' => $bugtracker };
 	}
 
 	return $meta;

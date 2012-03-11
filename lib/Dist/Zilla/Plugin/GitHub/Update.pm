@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.15';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.16';
 }
 
 use Moose;
@@ -36,13 +36,18 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 
 Configure git with your GitHub credentials:
 
     $ git config --global github.user LoginName
+    $ git config --global github.password GitHubPassword
+
+Alternatively, the GitHub login token can be used instead of the password
+(note that token-based login has been deprecated by GitHub):
+
     $ git config --global github.token GitHubToken
 
 then, in your F<dist.ini>:
@@ -65,47 +70,51 @@ sub release {
 				$self -> repo :
 				$self -> zilla -> name;
 
-	my $login = `git config github.user`;  chomp $login;
-	my $token = `git config github.token`; chomp $token;
-
-	if (!$login or !$token) {
-		$self -> log("Err: Provide valid GitHub login values");
-		return;
-	}
+	my ($login, $pass, $token)  = $self -> _get_credentials(0);
 
 	my $http = HTTP::Tiny -> new;
 
 	$self -> log("Updating GitHub repository info");
 
-	push my @params,
-		"login=$login",
-		"token=$token",
-		'values[description]='.$self -> zilla -> abstract;
+	my @params;
+
+	push @params, "login=$login", "token=$token" if $token;
+	push @params, 'values[description]='.$self -> zilla -> abstract;
 
 	if ($self -> metacpan == 1) {
 		$self -> log("Using MetaCPAN URL");
-		push @params, "values[homepage]=http://metacpan.org/release/$repo_name/"
+		push @params,
+			"values[homepage]=http://metacpan.org/release/$repo_name/"
 	} elsif ($self -> p3rl == 1) {
 		my $guess_name = $repo_name;
 		$guess_name =~ s/\-/\:\:/g;
 
 		$self -> log("Using P3rl URL");
-		push @params, "values[homepage]=http://p3rl.org/$guess_name"
+		push @params,
+			"values[homepage]=http://p3rl.org/$guess_name"
 	} elsif ($self -> cpan == 1) {
 		$self -> log("Using CPAN URL");
-		push @params, "values[homepage]=http://search.cpan.org/dist/$repo_name/"
+		push @params,
+			"values[homepage]=http://search.cpan.org/dist/$repo_name/"
 	}
 
-	my $url 	= $self -> api."/repos/show/$login/$repo_name";
+	my $url 	= $self -> api."repos/show/$login/$repo_name";
+
+	my $headers	= {
+		'content-type' => 'application/x-www-form-urlencoded'
+	};
+
+	if ($pass) {
+		require MIME::Base64;
+
+		my $basic = MIME::Base64::encode_base64("$login:$pass", '');
+		$headers -> {'authorization'} = "Basic $basic";
+	}
+
 	my $response	= $http -> request('POST', $url, {
 		content => join("&", @params),
-		headers => {'content-type' => 'application/x-www-form-urlencoded'}
+		headers => $headers
 	});
-
-	if ($response -> {'success'} eq '') {
-		$self -> log("Err: Can't connect to GitHub.com");
-		return;
-	}
 
 	if ($response -> {'status'} == 401) {
 		$self -> log("Err: Not authorized");
