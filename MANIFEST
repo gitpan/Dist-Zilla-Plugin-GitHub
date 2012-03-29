@@ -12,6 +12,5 @@ lib/Dist/Zilla/Plugin/GitHub/Meta.pm
 lib/Dist/Zilla/Plugin/GitHub/Update.pm
 lib/Dist/Zilla/PluginBundle/GitHub.pm
 t/00-compile.t
-t/000-report-versions.t
 t/release-check-manifest.t
 t/release-pod-syntax.t

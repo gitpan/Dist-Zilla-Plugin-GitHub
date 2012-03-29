@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.16';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.17';
 }
 
 use Moose;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 SYNOPSIS
 
@@ -119,6 +119,7 @@ sub metadata {
 	my $offline	= 0;
 
 	my ($login, undef, undef)  = $self -> _get_credentials(1);
+	return {} if (!$login);
 
 	my $http	= HTTP::Tiny -> new;
 

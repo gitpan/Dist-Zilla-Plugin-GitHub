@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub;
 {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.16';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.17';
 }
 
 use Moose;
@@ -26,7 +26,7 @@ Dist::Zilla::Plugin::GitHub - Set of plugins for working with GitHub
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 DESCRIPTION
 
@@ -54,7 +54,7 @@ sub _get_credentials {
 	$login = `git config github.user`;  chomp $login;
 
 	if (!$login) {
-		$self -> log("Err: Provide valid GitHub login values");
+		$self -> log("Err: Missing value 'github.user' in git config");
 		return;
 	}
 

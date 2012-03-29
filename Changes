@@ -1,9 +1,25 @@
 ==================================================
-Changes from 2011-03-12 00:00:00 +0000 to present.
+Changes from 2011-03-30 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.16 at 2012-03-11 15:45:29 +0000
+version 0.17 at 2012-03-29 11:39:26 +0000
+-----------------------------------------
+
+  Change: b5f2fe798357ce5a19cdfb5018bd8eb6d2fd8d4d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-29 13:26:19 +0000
+
+    improve error message when github.user is not set (closes #9) 
+
+  Change: cfeb129935684d33ff1c7b26f1cdf785abed7b11
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-29 13:26:13 +0000
+
+    do nothing if login info is not available 
+
+-----------------------------------------
+version 0.16 at 2012-03-11 14:32:32 +0000
 -----------------------------------------
 
   Change: 86e791a2695186dacec9d78f2bf18986c9dd3b52
@@ -318,64 +334,6 @@ version 0.07 at 2011-04-24 21:19:02 +0000
 
     add GitHub::Meta and @GitHub to tests 
 
------------------------------------------
-version 0.06 at 2011-03-13 16:33:08 +0000
------------------------------------------
-
-  Change: 9ee911639868574a39f22bef5d19eb128aa41be1
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 17:33:08 +0000
-
-    bump version 
-
-  Change: 4ca90adb89ce44bb1c9dc86cad04713d108b990b
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 17:15:28 +0000
-
-    force prereq on IO::Socket::SSL (neede for https GitHub URLs) 
-
-  Change: 44faa3ea433f59a7bf6dd4abe330c463cf638298
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 17:13:42 +0000
-
-    fix missing equals for description field in HTTP request 
-
------------------------------------------
-version 0.05 at 2011-03-13 15:51:02 +0000
------------------------------------------
-
-  Change: d471cb6883430723b8eb6c2e28dd4690d8e8cad0
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 16:51:02 +0000
-
-    bump version 
-
-  Change: 657c3070fde6c3e72b1a923e62d4da690ce26dd2
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 16:50:19 +0000
-
-    check if the project homepage is set, if not don't set the field even
-    if it is configured 
-
-  Change: 75b34171387f9117c1f3d8ca66a6e79be3084cf7
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 16:49:33 +0000
-
-    check if the GitHub issues tracker is used, if not don't set the
-    field even if it is configured 
-
-  Change: 8e36bf324cb2f1285ecda83db99ff38fa121a104
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 16:48:43 +0000
-
-    use the 'wiki' option 
-
-  Change: 7a576d9f37d580548aecb3e75006aa2313a4c36c
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-13 16:42:57 +0000
-
-    update documentation 
-
 ================================================
-Plus 4 releases after 2011-03-12 00:00:00 +0000.
+Plus 6 releases after 2011-03-30 00:00:00 +0000.
 ================================================
