@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::GitHub;
 {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.17';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.18';
 }
 
 use Moose;
@@ -54,8 +54,8 @@ has 'fork' => (
 	isa     => 'Bool',
 	lazy    => 1,
 	default => sub {
-			defined $_[0] -> payload -> {bugs} ?
-				$_[0] -> payload -> {bugs} : 1
+			defined $_[0] -> payload -> {fork} ?
+				$_[0] -> payload -> {fork} : 1
 		}
 );
 
@@ -97,7 +97,7 @@ Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.17
+version 0.18
 
 =head1 SYNOPSIS
 

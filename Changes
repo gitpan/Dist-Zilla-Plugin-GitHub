@@ -1,9 +1,51 @@
 ==================================================
-Changes from 2011-03-30 00:00:00 +0000 to present.
+Changes from 2011-04-11 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.17 at 2012-03-29 11:39:26 +0000
+version 0.18 at 2012-04-10 10:20:44 +0000
+-----------------------------------------
+
+  Change: d43f115bcd76967aa1539b5434b77aa969881a8e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-10 12:17:48 +0000
+
+    GitHub.pm: better error handling 
+
+  Change: 7db25f2fa3f49ff41d578f2e4cb0d81a23ebcaed
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-10 12:08:40 +0000
+
+    switch to GitHub API v3 and discontinue token-based login 
+
+  Change: 63ab3dfdf1cf0584fda85d433fabb460e48813ec
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-10 10:44:33 +0000
+
+    dist.ini: use Bootstrap::lib plugin 
+
+  Change: c708e234a62533504f134618440fbe8e6894f3c9
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-10 01:40:48 +0000
+
+    Merge pull request #10 from ioanrogers/patch-1
+
+    Wrong default for fork 
+
+  Change: 4b1255b7d03d007e1e81febb2d782f91aa1463f4
+  Author: Ioan Rogers <ioan.rogers@gmail.com>
+  Date : 2012-04-09 15:21:03 +0000
+
+    Wrong default for fork 
+
+  Change: 36f05bf26d387a987c9558808d3040de1dc3f7e2
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-03-29 13:50:18 +0000
+
+    Update.pm: do nothing if login value is not available 
+
+-----------------------------------------
+version 0.17 at 2012-03-29 11:26:19 +0000
 -----------------------------------------
 
   Change: b5f2fe798357ce5a19cdfb5018bd8eb6d2fd8d4d
@@ -335,5 +377,5 @@ version 0.07 at 2011-04-24 21:19:02 +0000
     add GitHub::Meta and @GitHub to tests 
 
 ================================================
-Plus 6 releases after 2011-03-30 00:00:00 +0000.
+Plus 6 releases after 2011-04-11 00:00:00 +0000.
 ================================================
