@@ -1,35 +1,35 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.18';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.19';
 }
+
+use strict;
+use warnings;
 
 use JSON;
 use Moose;
 use File::Basename;
-
-use strict;
-use warnings;
 
 extends 'Dist::Zilla::Plugin::GitHub';
 
 with 'Dist::Zilla::Role::AfterMint';
 
 has 'public' => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
+	is	=> 'ro',
+	isa	=> 'Bool',
 	default	=> 1
 );
 
 has 'remote' => (
-	is   	=> 'ro',
-	isa  	=> 'Str',
+	is	=> 'ro',
+	isa	=> 'Str',
 	default	=> 'origin'
 );
 
 has 'prompt' => (
-        is      => 'ro',
-        isa     => 'Bool',
-        default => 0
+        is	=> 'ro',
+        isa	=> 'Bool',
+        default	=> 0
 );
 
 =head1 NAME
@@ -38,7 +38,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 

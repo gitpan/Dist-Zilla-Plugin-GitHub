@@ -1,5 +1,5 @@
 ---
-abstract: 'Set of plugins for working with GitHub'
+abstract: 'Plugins to integrate Dist::Zilla with GitHub'
 author:
   - 'Alessandro Ghedini <alexbio@cpan.org>'
 build_requires:
@@ -32,9 +32,9 @@ requires:
   warnings: 0
 resources:
   bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
-  homepage: http://metacpan.org/release/Dist-Zilla-Plugin-GitHub/
+  homepage: https://github.com
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.18
+version: 0.19
 x_Dist_Zilla:
   plugins:
     -
@@ -100,7 +100,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@Author::ALEXBIO/Git::NextVersion'
-      version: 1.120970
+      version: 1.121010
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@Author::ALEXBIO/MetaConfig'
@@ -140,11 +140,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@Author::ALEXBIO/Git::Tag'
-      version: 1.120970
+      version: 1.121010
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@Author::ALEXBIO/Git::Push'
-      version: 1.120970
+      version: 1.121010
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@Author::ALEXBIO/UploadToCPAN'

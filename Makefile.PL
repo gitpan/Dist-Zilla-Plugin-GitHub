@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Set of plugins for working with GitHub",
+  "ABSTRACT" => "Plugins to integrate Dist::Zilla with GitHub",
   "AUTHOR" => "Alessandro Ghedini <alexbio\@cpan.org>",
   "BUILD_REQUIRES" => {
     "File::Find" => 0,
@@ -39,7 +39,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.18",
+  "VERSION" => "0.19",
   "test" => {
     "TESTS" => "t/*.t"
   }

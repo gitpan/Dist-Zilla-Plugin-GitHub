@@ -1,34 +1,40 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.18';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.19';
 }
-
-use JSON;
-use Moose;
 
 use strict;
 use warnings;
+
+use JSON;
+use Moose;
 
 extends 'Dist::Zilla::Plugin::GitHub';
 
 with 'Dist::Zilla::Role::Releaser';
 
 has 'cpan' => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
-	default => 1
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 1
 );
 
 has 'p3rl' => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
-	default => 0
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 0
 );
 
 has 'metacpan' => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
-	default => 0
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 0
+);
+
+has 'meta_home' => (
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 0
 );
 
 =head1 NAME
@@ -37,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 
@@ -65,8 +71,8 @@ when C<dzil release> is run.
 =cut
 
 sub release {
-	my $self 	= shift;
-	my ($opts) 	= @_;
+	my $self	= shift;
+	my ($opts)	= @_;
 	my $repo_name	= $self -> repo ?
 				$self -> repo :
 				$self -> zilla -> name;
@@ -83,7 +89,13 @@ sub release {
 	$params -> {'name'} = $repo_name;
 	$params -> {'description'} = $self -> zilla -> abstract;
 
-	if ($self -> metacpan == 1) {
+	my $meta_home = $self -> zilla -> distmeta
+		-> {'resources'} -> {'homepage'};
+
+	if ($meta_home && $self -> meta_home) {
+		$self -> log("Using distmeta URL");
+		$params -> {'homepage'} = $meta_home;
+	} elsif ($self -> metacpan == 1) {
 		$self -> log("Using MetaCPAN URL");
 		$params -> {'homepage'} =
 			"http://metacpan.org/release/$repo_name/"
@@ -149,6 +161,15 @@ is false).
 
 This takes precedence over the C<cpan> and C<p3rl> options (if all three are
 true, metacpan will be used).
+
+=item C<meta_home>
+
+The GitHub homepage field will be set to the value present in the dist meta
+(e.g. the one set by other plugins) if this option is set to true (default is
+false). If no value is present in the dist meta, this option is ignored.
+
+This takes precedence over the C<metacpan>, C<cpan> and C<p3rl> options (if all
+four are true, meta_home will be used).
 
 =back
 

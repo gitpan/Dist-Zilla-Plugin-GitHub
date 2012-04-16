@@ -1,12 +1,12 @@
 package Dist::Zilla::PluginBundle::GitHub;
 {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.18';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.19';
 }
 
-use Moose;
-
-use warnings;
 use strict;
+use warnings;
+
+use Moose;
 
 extends 'Dist::Zilla::Plugin::GitHub';
 
@@ -20,40 +20,40 @@ has '+repo' => (
 # GitHub::Meta
 
 has 'homepage' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	lazy    => 1,
-	default => sub {
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
 			defined $_[0] -> payload -> {homepage} ?
 				$_[0] -> payload -> {homepage} : 1
 		}
 );
 
 has 'bugs' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	lazy    => 1,
-	default => sub {
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
 			defined $_[0] -> payload -> {bugs} ?
 				$_[0] -> payload -> {bugs} : 1
 		}
 );
 
 has 'wiki' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	lazy    => 1,
-	default => sub {
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
 			defined $_[0] -> payload -> {wiki} ?
 				$_[0] -> payload -> {wiki} : 0
 		}
 );
 
 has 'fork' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	lazy    => 1,
-	default => sub {
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
 			defined $_[0] -> payload -> {fork} ?
 				$_[0] -> payload -> {fork} : 1
 		}
@@ -62,32 +62,42 @@ has 'fork' => (
 # GitHub::Update
 
 has 'cpan' => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
-	lazy    => 1,
-	default => sub {
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
 			defined $_[0] -> payload -> {cpan} ?
 				$_[0] -> payload -> {cpan} : 1
 		}
 );
 
 has 'p3rl' => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
-	lazy    => 1,
-	default => sub {
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
 			defined $_[0] -> payload -> {p3rl} ?
 				$_[0] -> payload -> {p3rl} : 0
 		}
 );
 
 has 'metacpan' => (
-	is   	=> 'ro',
-	isa  	=> 'Bool',
-	lazy    => 1,
-	default => sub {
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
 			defined $_[0] -> payload -> {metacpan} ?
 				$_[0] -> payload -> {metacpan} : 0
+		}
+);
+
+has 'meta_home' => (
+	is	=> 'ro',
+	isa	=> 'Bool',
+	lazy	=> 1,
+	default	=> sub {
+			defined $_[0] -> payload -> {meta_home} ?
+				$_[0] -> payload -> {meta_home} : 0
 		}
 );
 
@@ -97,7 +107,7 @@ Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 
@@ -133,7 +143,8 @@ sub configure {
 			repo => $self -> repo,
 			cpan => $self -> cpan,
 			p3rl => $self -> p3rl,
-			metacpan => $self -> metacpan
+			metacpan  => $self -> metacpan,
+			meta_home => $self -> meta_home
 		}]
 	);
 }
@@ -191,6 +202,15 @@ is false).
 
 This takes precedence over the C<cpan> and C<p3rl> options (if all three are
 true, metacpan will be used).
+
+=item C<meta_home>
+
+The GitHub homepage field will be set to the value present in the dist meta
+(e.g. the one set by other plugins) if this option is set to true (default is
+false). If no value is present in the dist meta, this option is ignored.
+
+This takes precedence over the C<metacpan>, C<cpan> and C<p3rl> options (if all
+four are true, meta_home will be used).
 
 =back
 

@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub;
 {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.18';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.19';
 }
 
 use JSON;
@@ -24,11 +24,11 @@ has 'api'  => (
 
 =head1 NAME
 
-Dist::Zilla::Plugin::GitHub - Set of plugins for working with GitHub
+Dist::Zilla::Plugin::GitHub - Plugins to integrate Dist::Zilla with GitHub
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 DESCRIPTION
 
@@ -78,6 +78,7 @@ sub _get_credentials {
 					defined $_[0] and length $_[0]
 				});
 			Term::ReadKey::ReadMode('normal');
+			print "\n";
 		}
 	}
 

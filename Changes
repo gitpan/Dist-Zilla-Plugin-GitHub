@@ -1,9 +1,49 @@
 ==================================================
-Changes from 2011-04-11 00:00:00 +0000 to present.
+Changes from 2011-04-17 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.18 at 2012-04-10 10:20:44 +0000
+version 0.19 at 2012-04-16 19:11:23 +0000
+-----------------------------------------
+
+  Change: 193527529910023503f48b128da3a998d8bb58d4
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-16 21:08:45 +0000
+
+    trim trailing whitespaces 
+
+  Change: e4654fbaa6ffe861a1dd9d394ba9bb02b067bf74
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-16 21:05:47 +0000
+
+    PluginBundle/GitHub.pm: add meta_home option too 
+
+  Change: 3613309245c715f9dee27f0d1b9a1edba5741e5f
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-16 20:43:49 +0000
+
+    Update.pm: add meta_home option (closes #12) 
+
+  Change: 83ce0c56d860360d531b8befde1267985b4b7f26
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-16 20:42:05 +0000
+
+    GitHub.pm: print a new line after password request 
+
+  Change: 1af00da8c1c86da6e676c14205cfd18e2c895f41
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-16 20:00:59 +0000
+
+    minor style fixes 
+
+  Change: 7d33079274b8aca21a6126753536361e646f825a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-04-16 19:58:00 +0000
+
+    GitHub.pm: improve short description 
+
+-----------------------------------------
+version 0.18 at 2012-04-10 10:17:48 +0000
 -----------------------------------------
 
   Change: d43f115bcd76967aa1539b5434b77aa969881a8e
@@ -377,5 +417,5 @@ version 0.07 at 2011-04-24 21:19:02 +0000
     add GitHub::Meta and @GitHub to tests 
 
 ================================================
-Plus 6 releases after 2011-04-11 00:00:00 +0000.
+Plus 6 releases after 2011-04-17 00:00:00 +0000.
 ================================================

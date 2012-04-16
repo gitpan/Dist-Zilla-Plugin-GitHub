@@ -1,40 +1,40 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.18';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.19';
 }
-
-use JSON;
-use Moose;
 
 use strict;
 use warnings;
+
+use JSON;
+use Moose;
 
 extends 'Dist::Zilla::Plugin::GitHub';
 
 with 'Dist::Zilla::Role::MetaProvider';
 
 has 'homepage' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	default => 1
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 1
 );
 
 has 'bugs' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	default => 1
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 1
 );
 
 has 'wiki' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	default => 0
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 0
 );
 
 has 'fork' => (
-	is      => 'ro',
-	isa     => 'Bool',
-	default => 1
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 1
 );
 
 =head1 NAME
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 
@@ -111,8 +111,8 @@ When offline, this is not set.
 =cut
 
 sub metadata {
-	my $self 	= shift;
-	my ($opts) 	= @_;
+	my $self	= shift;
+	my ($opts)	= @_;
 	my $repo_name	= $self -> repo ?
 				$self -> repo :
 				$self -> zilla -> name;
