@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.19';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.20';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 
@@ -165,7 +165,8 @@ sub metadata {
 		$wiki = "$html_url/wiki";
 	}
 
-	my $meta -> {'resources'} = {
+	my $meta;
+	$meta -> {'resources'} = {
 		'repository' => {
 			'web'  => $html_url,
 			'url'  => $git_url,

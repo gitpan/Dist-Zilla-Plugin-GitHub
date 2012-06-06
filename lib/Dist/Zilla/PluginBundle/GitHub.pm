@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::GitHub;
 {
-  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.19';
+  $Dist::Zilla::PluginBundle::GitHub::VERSION = '0.20';
 }
 
 use strict;
@@ -107,7 +107,7 @@ Dist::Zilla::PluginBundle::GitHub - GitHub plugins all-in-one
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 

@@ -1,9 +1,38 @@
 ==================================================
-Changes from 2011-04-17 00:00:00 +0000 to present.
+Changes from 2011-06-07 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.19 at 2012-04-16 19:11:23 +0000
+version 0.20 at 2012-06-06 19:15:50 +0000
+-----------------------------------------
+
+  Change: ae501ebb2549634b14e8796a8ddf18cad5669a33
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-06 21:15:18 +0000
+
+    {Create,Update}.pm: document the Config::Identity thing 
+
+  Change: 9b321b10116db0fb8b1b69fa8c4540a7d3be9eb9
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-06 21:15:18 +0000
+
+    GitHub.pm: support Config::Identity::GitHub for retrieving
+    credentials 
+
+  Change: 1b24c396285f69b28170fa9562f6c88edba9b793
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-06 20:41:19 +0000
+
+    Merge branch 'perl5.8-fix' of berekuk/Dist-Zilla-Plugin-GitHub 
+
+  Change: 63a4c089f207f11055ceead6ccff7e9a4ba7e22e
+  Author: Vyacheslav Matyukhin <mmcleric@yandex-team.ru>
+  Date : 2012-06-06 22:08:44 +0000
+
+    fix GitHub::Meta plugin on perl 5.8 
+
+-----------------------------------------
+version 0.19 at 2012-04-16 19:08:45 +0000
 -----------------------------------------
 
   Change: 193527529910023503f48b128da3a998d8bb58d4
@@ -292,130 +321,6 @@ version 0.11 at 2011-08-06 19:13:14 +0000
 
     abort on GitHub error (closes: #2) 
 
------------------------------------------
-version 0.10 at 2011-06-06 17:29:46 +0000
------------------------------------------
-
-  Change: 66b6c079876aede859869178c3f1aa411c17b296
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-06-06 19:29:46 +0000
-
-    bump version 
-
-  Change: 45fe9207c06d222c00cfa7a91804885a6f90152f
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-06-06 19:20:29 +0000
-
-    log which URL is used 
-
-  Change: fc7bbf63daf0968c6e9e28ec543192ae2d5d827a
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-06-06 19:20:29 +0000
-
-    implement metacpan.org URL for Update.pm 
-
------------------------------------------
-version 0.09 at 2011-06-03 19:29:46 +0000
------------------------------------------
-
-  Change: 9dbf48ed59d9d1ea76b9f4b99227118607fa4616
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-06-03 21:29:46 +0000
-
-    bump version 
-
-  Change: 5f2d450561cbb7807db7fd1b0a39ac8df3e99d0b
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-06-03 21:29:32 +0000
-
-    also Create.pm extends GitHub.pm 
-
-  Change: 752ba02eef0713b910a209bbfb94766d7fa1352a
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-05-05 22:33:02 +0000
-
-    fix dumb copy-paste error in Meta plugin doc 
-
------------------------------------------
-version 0.08 at 2011-05-05 17:56:05 +0000
------------------------------------------
-
-  Change: 2a330e28fc77477814207a906a051b6d4bf480d8
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-05-05 19:56:05 +0000
-
-    bump version 
-
-  Change: 64b5ebe55e8fda904515ecd577ebb6960c255c4c
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-05-05 19:55:25 +0000
-
-    use HTTP::Tiny once in GitHub.pm 
-
-  Change: 3b29c28bde084791dbc459967920ece1bc86118a
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-05-05 19:55:25 +0000
-
-    improve distribution description 
-
-  Change: 962c986499a72b90d7a860149e579b5dcf050955
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-05-05 19:55:25 +0000
-
-    move modules rename notice to the ACKNOWLEDGMENTS section 
-
-  Change: aa363a2952638edf848fb10c3abf94890398dace
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-05-05 19:55:25 +0000
-
-    improve GitHub::Meta docs 
-
-  Change: af954dd0e07d1e8802ecbe5001a68e49886e3b07
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-05-05 19:55:25 +0000
-
-    code clean-up 
-
-  Change: 37db2c40a0241024c5a72263f97a505f1ca4a6cd
-  Author: Ricardo Signes <rjbs@cpan.org>
-  Date : 2011-05-05 22:33:35 +0000
-
-    token (for login) is not needed for Meta plugin 
-
------------------------------------------
-version 0.07 at 2011-04-24 21:19:02 +0000
------------------------------------------
-
-  Change: ba081a5534021de5ab826cd41e8c0bac8fb868c3
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-04-24 23:19:02 +0000
-
-    bump version 
-
-  Change: 35cbae3133d3395b625493b698ccbeb53b61715d
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-04-24 23:19:02 +0000
-
-    use @Author::ALEXBIO dzil plugin bundle 
-
-  Change: bf6d062c70ffdde6ca5d0cc645683eac228b42f2
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-04-24 23:17:31 +0000
-
-    make classes immutable 
-
-  Change: 84c572c5377bbe53f4955ddb67545bb14a1c190f
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-21 21:01:02 +0000
-
-    remove 'token' and 'login' options from GitHub::Create docs 
-
-  Change: b909053ac99c0e86d12f9248c66fa0fb308554a1
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-03-18 15:33:46 +0000
-
-    add GitHub::Meta and @GitHub to tests 
-
-================================================
-Plus 6 releases after 2011-04-17 00:00:00 +0000.
-================================================
+=================================================
+Plus 10 releases after 2011-06-07 00:00:00 +0000.
+=================================================

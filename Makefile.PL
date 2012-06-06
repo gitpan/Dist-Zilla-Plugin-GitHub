@@ -24,6 +24,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::GitHub",
   "PREREQ_PM" => {
+    "Class::Load" => 0,
     "Dist::Zilla::Role::AfterMint" => 0,
     "Dist::Zilla::Role::MetaProvider" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
@@ -39,7 +40,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.19",
+  "VERSION" => "0.20",
   "test" => {
     "TESTS" => "t/*.t"
   }
