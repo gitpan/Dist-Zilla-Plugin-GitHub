@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.20';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.21';
 }
 
 use strict;
@@ -38,7 +38,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.20
+version 0.21
 
 =head1 SYNOPSIS
 
@@ -47,8 +47,8 @@ Configure git with your GitHub credentials:
     $ git config --global github.user LoginName
     $ git config --global github.password GitHubPassword
 
-Alternatively, you can write your credentials in the (optionally GPG-encrypted)
-C<~/.github> file as follows:
+Alternatively you can install L<Config::Identity> and write your credentials
+in the (optionally GPG-encrypted) C<~/.github> file as follows:
 
     login LoginName
     password GitHubpassword
@@ -72,9 +72,11 @@ sub after_mint {
 	my $self	= shift;
 	my ($opts)	= @_;
 
-        return if $self -> prompt and not $self -> _confirm;
+	my $root = $opts -> {'mint_root'};
 
-	my $repo_name	= basename($opts -> {'mint_root'});
+	return if $self -> prompt and not $self -> _confirm;
+
+	my $repo_name	= $opts -> {'repo'} || basename($root);
 
 	my ($login, $pass)  = $self -> _get_credentials(0);
 
@@ -106,7 +108,7 @@ sub after_mint {
 	my $repo = $self -> _check_response($response);
 	return if not $repo;
 
-	my $git_dir = $opts -> {mint_root}."/.git";
+	my $git_dir = "$root/.git";
 	my $rem_ref = $git_dir."/refs/remotes/".$self -> remote;
 
 	if ((-d $git_dir) && (!-d $rem_ref)) {
@@ -122,12 +124,12 @@ sub after_mint {
 }
 
 sub _confirm {
-    my ($self) = @_;
+	my ($self) = @_;
 
-    my $dist = $self -> zilla -> name;
-    my $prompt = "Shall I create a GitHub repository for $dist?";
-    return $self -> zilla -> chrome -> prompt_yn($prompt, {default => 1} );
+	my $dist = $self -> zilla -> name;
+	my $prompt = "Shall I create a GitHub repository for $dist?";
 
+	return $self -> zilla -> chrome -> prompt_yn($prompt, {default => 1} );
 }
 
 =head1 ATTRIBUTES

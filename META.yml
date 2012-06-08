@@ -17,6 +17,8 @@ meta-spec:
 name: Dist-Zilla-Plugin-GitHub
 requires:
   Class::Load: 0
+  Dist::Zilla::App: 0
+  Dist::Zilla::Dist::Minter: 0
   Dist::Zilla::Role::AfterMint: 0
   Dist::Zilla::Role::MetaProvider: 0
   Dist::Zilla::Role::PluginBundle::Easy: 0
@@ -29,9 +31,12 @@ requires:
   Moose: 0
   Term::ReadKey: 0
   Try::Tiny: 0
+  perl: v5.10.0
   strict: 0
   warnings: 0
-version: 0.20
+resources:
+  repository: git://github.com/sah4eeTa/Dist-Zilla-Plugin-GitHub.git
+version: 0.21
 x_Dist_Zilla:
   plugins:
     -

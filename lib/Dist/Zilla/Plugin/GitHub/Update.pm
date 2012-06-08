@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.20';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.21';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.20
+version 0.21
 
 =head1 SYNOPSIS
 
@@ -52,8 +52,8 @@ Configure git with your GitHub credentials:
     $ git config --global github.user LoginName
     $ git config --global github.password GitHubPassword
 
-Alternatively, you can write your credentials in the (optionally GPG-encrypted)
-C<~/.github> file as follows:
+Alternatively you can install L<Config::Identity> and write your credentials
+in the (optionally GPG-encrypted) C<~/.github> file as follows:
 
     login LoginName
     password GitHubpassword

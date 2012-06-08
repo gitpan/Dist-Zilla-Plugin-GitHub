@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+use 5.010000;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -25,6 +25,8 @@ my %WriteMakefileArgs = (
   "NAME" => "Dist::Zilla::Plugin::GitHub",
   "PREREQ_PM" => {
     "Class::Load" => 0,
+    "Dist::Zilla::App" => 0,
+    "Dist::Zilla::Dist::Minter" => 0,
     "Dist::Zilla::Role::AfterMint" => 0,
     "Dist::Zilla::Role::MetaProvider" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
@@ -40,7 +42,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.20",
+  "VERSION" => "0.21",
   "test" => {
     "TESTS" => "t/*.t"
   }

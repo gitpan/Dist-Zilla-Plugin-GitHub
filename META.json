@@ -22,6 +22,8 @@
       "runtime" : {
          "requires" : {
             "Class::Load" : "0",
+            "Dist::Zilla::App" : "0",
+            "Dist::Zilla::Dist::Minter" : "0",
             "Dist::Zilla::Role::AfterMint" : "0",
             "Dist::Zilla::Role::MetaProvider" : "0",
             "Dist::Zilla::Role::PluginBundle::Easy" : "0",
@@ -34,6 +36,7 @@
             "Moose" : "0",
             "Term::ReadKey" : "0",
             "Try::Tiny" : "0",
+            "perl" : "v5.10.0",
             "strict" : "0",
             "warnings" : "0"
          }
@@ -47,7 +50,14 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.20",
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/sah4eeTa/Dist-Zilla-Plugin-GitHub.git",
+         "web" : "https://github.com/sah4eeTa/Dist-Zilla-Plugin-GitHub"
+      }
+   },
+   "version" : "0.21",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

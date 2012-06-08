@@ -1,9 +1,44 @@
 ==================================================
-Changes from 2011-06-07 00:00:00 +0000 to present.
+Changes from 2011-06-09 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.20 at 2012-06-06 19:15:50 +0000
+version 0.21 at 2012-06-08 10:52:55 +0000
+-----------------------------------------
+
+  Change: b927651d478f5d6b40a652103d5ffdc8a05d4991
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-08 12:48:18 +0000
+
+    gh.pm: allow custom repository name on 'create' 
+
+  Change: feb4093565b21847da547a1b89343469915d3469
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-08 12:34:48 +0000
+
+    {Create,Update}.pm: specify that Config::Identity needs to be
+    installed for ~/.github file support 
+
+  Change: 79bbe38ff064bd7d17935012c345f2efc052de3c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-07 19:11:33 +0000
+
+    gh.pm: minor clean-up 
+
+  Change: ca756b3e7128c30b07088a73f05e3729932bfeb7
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-07 19:01:51 +0000
+
+    gh.pm: add 'gh' command to use the plugins from the command-line 
+
+  Change: d54b140399fb878e6ed7f72c56c68254e9ccb103
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-07 18:17:43 +0000
+
+    Create.pm: minor clean-up 
+
+-----------------------------------------
+version 0.20 at 2012-06-06 19:15:18 +0000
 -----------------------------------------
 
   Change: ae501ebb2549634b14e8796a8ddf18cad5669a33
@@ -322,5 +357,5 @@ version 0.11 at 2011-08-06 19:13:14 +0000
     abort on GitHub error (closes: #2) 
 
 =================================================
-Plus 10 releases after 2011-06-07 00:00:00 +0000.
+Plus 10 releases after 2011-06-09 00:00:00 +0000.
 =================================================
