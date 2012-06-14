@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.21';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.22';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 SYNOPSIS
 
@@ -58,8 +58,8 @@ then, in your F<dist.ini>:
 
 =head1 DESCRIPTION
 
-This Dist::Zilla plugin adds some information about the distribution's
-GitHub repository to the META.{yml,json} files, using the official L<CPAN::Meta>
+This Dist::Zilla plugin adds some information about the distribution's GitHub
+repository to the META.{yml,json} files, using the official L<CPAN::Meta>
 specification.
 
 It currently sets the following fields:
@@ -133,10 +133,9 @@ sub metadata {
 
 	$self -> log("Using offline repository information") if $offline;
 
-	if (!$offline && $repo -> {'fork'} == JSON::true() &&
-						$self -> fork == 1) {
-		my $url		=
-			$self -> api.'/repos/show/'.$repo -> {'parent'};
+	if (!$offline && $repo->{'fork'} == JSON::true() && $self->fork == 1) {
+		my $parent	= $repo -> {'parent'} -> {'full_name'};
+		my $url		= $self -> api.'/repos/'.$parent;
 		my $response	= $http -> request('GET', $url);
 
 		$repo = $self -> _check_response($response);

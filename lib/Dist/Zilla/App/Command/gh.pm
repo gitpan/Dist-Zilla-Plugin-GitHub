@@ -1,6 +1,6 @@
 package Dist::Zilla::App::Command::gh;
 {
-  $Dist::Zilla::App::Command::gh::VERSION = '0.21';
+  $Dist::Zilla::App::Command::gh::VERSION = '0.22';
 }
 
 use v5.10;
@@ -16,7 +16,7 @@ Dist::Zilla::App::Command::gh - Use the GitHub plugins from the command-line
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 SYNOPSIS
 
@@ -27,6 +27,10 @@ version 0.21
     $ dzil gh update
 
 =cut
+
+sub abstract    { 'use the GitHub plugins from the command-line' }
+sub description { 'Use the GitHub plugins from the command-line' }
+sub usage_desc  { '%c %o [ update | create [<repository>] ]' }
 
 sub execute {
 	my ($self, $opt, $arg) = @_;

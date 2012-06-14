@@ -1,9 +1,37 @@
 ==================================================
-Changes from 2011-06-09 00:00:00 +0000 to present.
+Changes from 2011-06-15 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.21 at 2012-06-08 10:52:55 +0000
+version 0.22 at 2012-06-14 18:31:24 +0000
+-----------------------------------------
+
+  Change: 61d220449581e8b6f39faf11d5c7e85bfd0c720c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-14 20:14:22 +0000
+
+    Meta.pm: fix request URL for forks 
+
+  Change: b4f899911b516ee7002cfd78e673d41f207e1afd
+  Author: Mike Doherty <doherty@cs.dal.ca>
+  Date : 2012-06-14 20:08:07 +0000
+
+    Meta.pm: fix metadata handling for a fork's parent 
+
+  Change: cdca71f5f1332b75612e0c2d0da01f55cf943ba3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-14 19:42:29 +0000
+
+    Meta.pm: minor formatting fix 
+
+  Change: 889f82529ba294f76ab069abc497ff5cbf48c848
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-08 15:11:44 +0000
+
+    gh.pm: add proper command and usage description 
+
+-----------------------------------------
+version 0.21 at 2012-06-08 10:48:18 +0000
 -----------------------------------------
 
   Change: b927651d478f5d6b40a652103d5ffdc8a05d4991
@@ -357,5 +385,5 @@ version 0.11 at 2011-08-06 19:13:14 +0000
     abort on GitHub error (closes: #2) 
 
 =================================================
-Plus 10 releases after 2011-06-09 00:00:00 +0000.
+Plus 10 releases after 2011-06-15 00:00:00 +0000.
 =================================================
