@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.22';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.23';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -60,9 +60,14 @@ in the (optionally GPG-encrypted) C<~/.github> file as follows:
 
 then, in your F<dist.ini>:
 
-    [GitHub::Update]
+    # default config
+    [GitHub::Meta]
+
+    # to override the repo name
+    [GitHub::Meta]
     repo = SomeRepo
-    cpan = 1
+
+See L</ATTRIBUTES> for more options.
 
 =head1 DESCRIPTION
 

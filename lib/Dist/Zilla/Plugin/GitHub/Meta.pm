@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.22';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.23';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -53,8 +53,14 @@ Configure git with your GitHub credentials:
 
 then, in your F<dist.ini>:
 
+    # default config
+    [GitHub::Meta]
+
+    # to override the repo name
     [GitHub::Meta]
     repo = SomeRepo
+
+See L</ATTRIBUTES> for more options.
 
 =head1 DESCRIPTION
 
@@ -62,7 +68,11 @@ This Dist::Zilla plugin adds some information about the distribution's GitHub
 repository to the META.{yml,json} files, using the official L<CPAN::Meta>
 specification.
 
-It currently sets the following fields:
+Note that, to work properly, L<GitHub::Meta> needs the network to connect to
+GitHub itself. If the network is not available, it will try to come up with
+sensible data, but it may be inaccurate.
+
+L<GitHub::Meta> currently sets the following fields:
 
 =over 4
 

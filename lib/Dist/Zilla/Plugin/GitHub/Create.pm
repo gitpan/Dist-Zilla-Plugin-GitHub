@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.22';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.23';
 }
 
 use strict;
@@ -38,7 +38,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -55,8 +55,14 @@ in the (optionally GPG-encrypted) C<~/.github> file as follows:
 
 then, in your F<profile.ini>:
 
+    # default config
     [GitHub::Create]
-    public = 1
+
+    # to override publicness
+    [GitHub::Create]
+    public = 0
+
+See L</ATTRIBUTES> for more options.
 
 =head1 DESCRIPTION
 

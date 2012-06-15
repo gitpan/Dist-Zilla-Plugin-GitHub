@@ -1,9 +1,31 @@
 ==================================================
-Changes from 2011-06-15 00:00:00 +0000 to present.
+Changes from 2011-06-16 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.22 at 2012-06-14 18:31:24 +0000
+version 0.23 at 2012-06-15 17:22:20 +0000
+-----------------------------------------
+
+  Change: 7195540c204c680cb27d984d44aba4daa6f3e39a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-15 19:20:49 +0000
+
+    Plugins/*.pm: improve SYNOPSIS sections 
+
+  Change: 558de05e9dcc606ce920c9a6728d89bfa622fed2
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-15 19:14:47 +0000
+
+    Meta.pm: add note about network needs 
+
+  Change: 4c63c7fcf9923725cc0c6a48de8560c64858130e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-06-15 18:50:56 +0000
+
+    dist.ini: bump versioned dependency on IO::Socket::SSL (closes #14) 
+
+-----------------------------------------
+version 0.22 at 2012-06-14 18:14:22 +0000
 -----------------------------------------
 
   Change: 61d220449581e8b6f39faf11d5c7e85bfd0c720c
@@ -385,5 +407,5 @@ version 0.11 at 2011-08-06 19:13:14 +0000
     abort on GitHub error (closes: #2) 
 
 =================================================
-Plus 10 releases after 2011-06-15 00:00:00 +0000.
+Plus 10 releases after 2011-06-16 00:00:00 +0000.
 =================================================

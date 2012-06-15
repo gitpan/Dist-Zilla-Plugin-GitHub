@@ -33,7 +33,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::Releaser" => 0,
     "File::Basename" => 0,
     "HTTP::Tiny" => 0,
-    "IO::Socket::SSL" => 0,
+    "IO::Socket::SSL" => "1.56",
     "JSON" => 0,
     "MIME::Base64" => 0,
     "Moose" => 0,
@@ -42,7 +42,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.22",
+  "VERSION" => "0.23",
   "test" => {
     "TESTS" => "t/*.t"
   }

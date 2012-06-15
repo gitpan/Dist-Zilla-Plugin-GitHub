@@ -25,7 +25,7 @@ requires:
   Dist::Zilla::Role::Releaser: 0
   File::Basename: 0
   HTTP::Tiny: 0
-  IO::Socket::SSL: 0
+  IO::Socket::SSL: 1.56
   JSON: 0
   MIME::Base64: 0
   Moose: 0
@@ -38,7 +38,7 @@ resources:
   bugtracker: https://github.com/AlexBio/Dist-Zilla-Plugin-GitHub/issues
   homepage: http://metacpan.org/release/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GitHub.git
-version: 0.22
+version: 0.23
 x_Dist_Zilla:
   plugins:
     -
