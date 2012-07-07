@@ -38,7 +38,7 @@ resources:
   bugtracker: https://github.com/AlexBio/p5-Dist-Zilla-Plugin-GitHub/issues
   homepage: http://metacpan.org/release/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/AlexBio/p5-Dist-Zilla-Plugin-GitHub.git
-version: 0.24
+version: 0.25
 x_Dist_Zilla:
   plugins:
     -
@@ -136,7 +136,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::CheckManifest
       name: '@Author::ALEXBIO/Test::CheckManifest'
-      version: 0.02
+      version: 0.03
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Author::ALEXBIO/PodSyntaxTests'
@@ -144,6 +144,10 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@Author::ALEXBIO/Git::Tag'
+      version: 1.121820
+    -
+      class: Dist::Zilla::Plugin::Git::Push
+      name: '@Author::ALEXBIO/Git::Push'
       version: 1.121820
     -
       class: Dist::Zilla::Plugin::UploadToCPAN

@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.24';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.25';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 
@@ -82,6 +82,7 @@ sub release {
 	my $repo_name	= $self -> repo ?
 				$self -> repo :
 				$self -> zilla -> name;
+	my $dist_name	= $self -> zilla -> name;
 
 	my ($login, $pass)  = $self -> _get_credentials(0);
 	return if (!$login);
@@ -104,9 +105,9 @@ sub release {
 	} elsif ($self -> metacpan == 1) {
 		$self -> log("Using MetaCPAN URL");
 		$params -> {'homepage'} =
-			"http://metacpan.org/release/$repo_name/"
+			"http://metacpan.org/release/$dist_name/"
 	} elsif ($self -> p3rl == 1) {
-		my $guess_name = $repo_name;
+		my $guess_name = $dist_name;
 		$guess_name =~ s/\-/\:\:/g;
 
 		$self -> log("Using P3rl URL");
@@ -114,7 +115,7 @@ sub release {
 	} elsif ($self -> cpan == 1) {
 		$self -> log("Using CPAN URL");
 		$params -> {'homepage'} =
-			"http://search.cpan.org/dist/$repo_name/"
+			"http://search.cpan.org/dist/$dist_name/"
 	}
 
 	my $url = $self -> api."/repos/$login/$repo_name";

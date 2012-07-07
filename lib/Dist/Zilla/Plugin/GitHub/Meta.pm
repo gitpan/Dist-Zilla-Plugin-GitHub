@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.24';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.25';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 
