@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.25';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.26';
 }
 
 use strict;
@@ -38,7 +38,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 SYNOPSIS
 
@@ -52,6 +52,8 @@ in the (optionally GPG-encrypted) C<~/.github> file as follows:
 
     login LoginName
     password GitHubpassword
+
+(if only the login name is set, the password will be asked interactively)
 
 then, in your F<profile.ini>:
 
@@ -94,6 +96,7 @@ sub after_mint {
 
 	$params -> {'name'}   = $repo_name;
 	$params -> {'public'} = $self -> public;
+	$params -> {'description'} = $opts -> {'descr'} if $opts -> {'descr'};
 
 	my $url = $self -> api.'/user/repos';
 

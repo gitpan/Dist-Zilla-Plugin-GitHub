@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.25';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.26';
 }
 
 use strict;
@@ -43,11 +43,11 @@ Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 SYNOPSIS
 
-Configure git with your GitHub credentials:
+Configure git with your GitHub login name:
 
     $ git config --global github.user LoginName
 
@@ -76,7 +76,7 @@ L<GitHub::Meta> currently sets the following fields:
 
 =over 4
 
-=item * C<homepage>
+=item C<homepage>
 
 The official home of this project on the web, taken from the GitHub repository
 info. If the C<homepage> option is set to false this will be skipped (default is
@@ -84,29 +84,29 @@ true).
 
 When offline, this is not set.
 
-=item * C<repository>
+=item C<repository>
 
 =over 4
 
-=item * C<web>
+=item C<web>
 
 URL pointing to the GitHub page of the project.
 
-=item * C<url>
+=item C<url>
 
 URL pointing to the GitHub repository (C<git://...>).
 
-=item * C<type>
+=item C<type>
 
 This is set to C<git> by default.
 
 =back
 
-=item * C<bugtracker>
+=item C<bugtracker>
 
 =over 4
 
-=item * C<web>
+=item C<web>
 
 URL pointing to the GitHub issues page of the project. If the C<bugs> option is
 set to false (default is true) or the issues are disabled in the GitHub

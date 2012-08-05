@@ -1,9 +1,37 @@
 ==================================================
-Changes from 2011-07-08 00:00:00 +0000 to present.
+Changes from 2011-08-06 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.25 at 2012-07-07 18:08:52 +0000
+version 0.26 at 2012-08-05 16:05:21 +0000
+-----------------------------------------
+
+  Change: 4d8ebf78049ae55d60e807b4896b65143ac932ad
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-05 18:04:57 +0000
+
+    gh.pm: use dist description when creating a new repo 
+
+  Change: 84a7d293a8209e2253dc308fcf847de989a8e010
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-07-23 19:07:32 +0000
+
+    Meta.pm: fixup description formatting 
+
+  Change: 0b701071fdc4e94e3387c350bae9feeda348d6ea
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-07-21 16:40:27 +0000
+
+    Meta.pm: fix docs about login name 
+
+  Change: 579eb81a096464efdfbc38cf689ee8d4b03fdf1b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-07-21 16:39:57 +0000
+
+    {Create,Update}.pm: fix docs about credentials 
+
+-----------------------------------------
+version 0.25 at 2012-07-07 18:03:22 +0000
 -----------------------------------------
 
   Change: b9da9d0573d4a9df20512430694e228e0d685cf8
@@ -427,5 +455,5 @@ version 0.11 at 2011-08-06 19:13:14 +0000
     abort on GitHub error (closes: #2) 
 
 =================================================
-Plus 10 releases after 2011-07-08 00:00:00 +0000.
+Plus 10 releases after 2011-08-06 00:00:00 +0000.
 =================================================

@@ -1,6 +1,6 @@
 package Dist::Zilla::App::Command::gh;
 {
-  $Dist::Zilla::App::Command::gh::VERSION = '0.25';
+  $Dist::Zilla::App::Command::gh::VERSION = '0.26';
 }
 
 use v5.10;
@@ -16,7 +16,7 @@ Dist::Zilla::App::Command::gh - Use the GitHub plugins from the command-line
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 SYNOPSIS
 
@@ -37,16 +37,18 @@ sub execute {
 
 	my $zilla = $self -> zilla;
 
+	$_ -> gather_files for
+		@{ $zilla -> plugins_with(-FileGatherer) };
+
 	given ($arg -> [0]) {
 		when ('create') {
 			require Dist::Zilla::Dist::Minter;
 
 			my $minter = Dist::Zilla::Dist::Minter
 				-> _new_from_profile(
-				[ 'Default', 'default' ],
-				{
+				[ 'Default', 'default' ], {
 					chrome => $self -> app -> chrome,
-					name   => $self -> zilla -> name,
+					name   => $zilla -> name,
 				},
 			);
 
@@ -56,17 +58,13 @@ sub execute {
 
 			$create -> after_mint({
 				mint_root => $root,
-				repo      => $repo
+				repo      => $repo,
+				descr     => $zilla -> abstract
 			});
 		}
 
 		when ('update') {
-			my $update = _find_plug($zilla, 'GitHub::Update');
-
-			$_ -> gather_files for
-				@{ $zilla -> plugins_with(-FileGatherer) };
-
-			$update -> release;
+			_find_plug($zilla, 'GitHub::Update') -> release;
 		}
 	}
 }

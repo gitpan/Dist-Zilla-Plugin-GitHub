@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.25';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.26';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 SYNOPSIS
 
@@ -57,6 +57,8 @@ in the (optionally GPG-encrypted) C<~/.github> file as follows:
 
     login LoginName
     password GitHubpassword
+
+(if only the login name is set, the password will be asked interactively)
 
 then, in your F<dist.ini>:
 
