@@ -1,9 +1,19 @@
 ==================================================
-Changes from 2011-08-06 00:00:00 +0000 to present.
+Changes from 2011-08-21 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.26 at 2012-08-05 16:05:21 +0000
+version 0.27 at 2012-08-20 11:17:02 +0000
+-----------------------------------------
+
+  Change: 6f7db65e01c4dc61f97f8bdd33f28a942e602450
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-17 13:05:29 +0000
+
+    GitHub.pm: re-order use strict/warnings 
+
+-----------------------------------------
+version 0.26 at 2012-08-05 16:04:57 +0000
 -----------------------------------------
 
   Change: 4d8ebf78049ae55d60e807b4896b65143ac932ad
@@ -394,66 +404,6 @@ version 0.14 at 2011-12-20 18:12:32 +0000
 
     document 'metacpan' option in GitHub bundle 
 
------------------------------------------
-version 0.13 at 2011-08-19 14:44:11 +0000
------------------------------------------
-
-  Change: a3f9db665ff66979c68aba827c21554c124d7631
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-19 16:44:11 +0000
-
-    bump version 
-
-  Change: b316040f8b1cec05d2db0a12205b73e586eec84c
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-19 16:42:17 +0000
-
-    automatically point to original repo if forked (closes: #5) 
-
------------------------------------------
-version 0.12 at 2011-08-13 12:54:30 +0000
------------------------------------------
-
-  Change: eb6dc18ab3ba6e44e7c5513aea1971dd6787ed8b
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-13 14:54:30 +0000
-
-    bump version 
-
-  Change: ab0ae4c814a9fc66f5e00915f7eb9012625803f3
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-13 14:43:17 +0000
-
-    return on error 
-
-  Change: 01d3007cd37d59e1ccf6dac0bd64a8120b9a01ed
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-13 14:42:35 +0000
-
-    check for connection errors (closes: #4) 
-
------------------------------------------
-version 0.11 at 2011-08-06 19:13:14 +0000
------------------------------------------
-
-  Change: 273759106c32d8ece9f334ae06b0fb2dd8eb37c4
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-06 21:13:14 +0000
-
-    bump version 
-
-  Change: 6dfc5810d4923d3c0198eedebf810c414a9b0f31
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-06 21:12:03 +0000
-
-    automatically add git remote (closes: #3) 
-
-  Change: 856cd8611274aa2ed4e2a36a3cd6120045a8465d
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-06 16:20:01 +0000
-
-    abort on GitHub error (closes: #2) 
-
 =================================================
-Plus 10 releases after 2011-08-06 00:00:00 +0000.
+Plus 13 releases after 2011-08-21 00:00:00 +0000.
 =================================================

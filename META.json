@@ -52,16 +52,16 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/AlexBio/p5-Dist-Zilla-Plugin-GitHub/issues"
+         "web" : "https://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub/issues"
       },
       "homepage" : "http://metacpan.org/release/Dist-Zilla-Plugin-GitHub/",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/AlexBio/p5-Dist-Zilla-Plugin-GitHub.git",
-         "web" : "https://github.com/AlexBio/p5-Dist-Zilla-Plugin-GitHub"
+         "url" : "git://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub.git",
+         "web" : "https://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub"
       }
    },
-   "version" : "0.26",
+   "version" : "0.27",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -212,7 +212,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Clean",
             "name" : "@Author::ALEXBIO/Clean",
-            "version" : "0.04"
+            "version" : "0.06"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",

@@ -1,16 +1,16 @@
 package Dist::Zilla::Plugin::GitHub;
 {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.26';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.27';
 }
+
+use strict;
+use warnings;
 
 use JSON;
 use Moose;
 use Try::Tiny;
 use HTTP::Tiny;
 use Class::Load qw(try_load_class);
-
-use strict;
-use warnings;
 
 has 'repo' => (
 	is      => 'ro',
@@ -29,7 +29,7 @@ Dist::Zilla::Plugin::GitHub - Plugins to integrate Dist::Zilla with GitHub
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 
