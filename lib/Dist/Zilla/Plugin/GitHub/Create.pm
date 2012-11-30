@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.27';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.28';
 }
 
 use strict;
@@ -38,7 +38,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 SYNOPSIS
 
@@ -84,7 +84,7 @@ sub after_mint {
 
 	return if $self -> prompt and not $self -> _confirm;
 
-	my $repo_name	= $opts -> {'repo'} || basename($root);
+	my $repo_name = $opts -> {'repo'} || basename($root);
 
 	my ($login, $pass)  = $self -> _get_credentials(0);
 
@@ -109,7 +109,7 @@ sub after_mint {
 
 	$content = to_json $params;
 
-	my $response	= $http -> request('POST', $url, {
+	my $response = $http -> request('POST', $url, {
 		content => $content,
 		headers => $headers
 	});

@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub;
 {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.27';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.28';
 }
 
 use strict;
@@ -29,7 +29,7 @@ Dist::Zilla::Plugin::GitHub - Plugins to integrate Dist::Zilla with GitHub
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 DESCRIPTION
 
@@ -100,6 +100,14 @@ sub _get_credentials {
 	}
 
 	return ($login, $pass);
+}
+
+sub _get_repo_name {
+	my ($self, $login) = @_;
+
+	my $repo = $self -> repo ? $self -> repo : $self -> zilla -> name;
+
+	return ($repo =~ /.*\/.*/ ? $repo : "$login/$repo");
 }
 
 sub _check_response {

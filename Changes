@@ -1,409 +1,129 @@
-==================================================
-Changes from 2011-08-21 00:00:00 +0000 to present.
-==================================================
+Revision history for Dist-Zilla-Plugin-GitHub
 
------------------------------------------
-version 0.27 at 2012-08-20 11:17:02 +0000
------------------------------------------
+0.28      2012-11-30 12:46:33 Europe/Rome
 
-  Change: 6f7db65e01c4dc61f97f8bdd33f28a942e602450
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-08-17 13:05:29 +0000
+ - Add a proper Changes file
+ - Support user/repository format for 'repo' option (GH#15)
 
-    GitHub.pm: re-order use strict/warnings 
+0.27      2012-08-20 11:17:23 Europe/Rome
 
------------------------------------------
-version 0.26 at 2012-08-05 16:04:57 +0000
------------------------------------------
+ - Rebuild to update META.* repository links (no functional changes)
 
-  Change: 4d8ebf78049ae55d60e807b4896b65143ac932ad
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-08-05 18:04:57 +0000
+0.26      2012-08-05 16:05:45 Europe/Rome
 
-    gh.pm: use dist description when creating a new repo 
+ - Documentation fixes and improvements (no functional changes)
+ - Use dist description when creating a new repo with the dzil gh command
 
-  Change: 84a7d293a8209e2253dc308fcf847de989a8e010
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-07-23 19:07:32 +0000
+0.25      2012-07-07 18:09:27 Europe/Rome
 
-    Meta.pm: fixup description formatting 
+ - Fix dist name in the META.* homepage
 
-  Change: 0b701071fdc4e94e3387c350bae9feeda348d6ea
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-07-21 16:40:27 +0000
+0.24      2012-07-07 12:49:53 Europe/Rome
 
-    Meta.pm: fix docs about login name 
+ - Rebuild to update META.* repository links (no functional changes)
 
-  Change: 579eb81a096464efdfbc38cf689ee8d4b03fdf1b
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-07-21 16:39:57 +0000
+0.23      2012-06-15 17:22:39 Europe/Rome
 
-    {Create,Update}.pm: fix docs about credentials 
+ - Bump versioned dependency on IO::Socket::SSL (GH#14)
 
------------------------------------------
-version 0.25 at 2012-07-07 18:03:22 +0000
------------------------------------------
+0.22      2012-06-14 18:31:51 Europe/Rome
 
-  Change: b9da9d0573d4a9df20512430694e228e0d685cf8
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-07-07 20:03:22 +0000
+ - Add proper command and usage description to the dzil gh command
+ - Various fixes related to forked repositories
 
-    Update.pm: fix wrong dist name in homepage 
+0.21      2012-06-08 10:53:12 Europe/Rome
 
------------------------------------------
-version 0.24 at 2012-07-07 12:43:56 +0000
------------------------------------------
+ - Add 'gh' command to use the plugins from the dzil command-line
 
-  Change: 50b6d784ed1fac01b863509e6521091d808cc8dc
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-07-07 14:43:56 +0000
+0.20      2012-06-06 19:16:05 Europe/Rome
 
-    dist.ini: update repo name 
+ - Fix GitHub::Meta plugin on perl 5.8 (GH#13) (thanks, @berekuk!)
+ - Optionally support Config::Identity::GitHub for retrieving credentials
 
------------------------------------------
-version 0.23 at 2012-06-15 17:20:49 +0000
------------------------------------------
+0.19      2012-04-16 19:11:47 Europe/Rome
 
-  Change: 7195540c204c680cb27d984d44aba4daa6f3e39a
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-15 19:20:49 +0000
+ - Add meta_home option (GH#12)
 
-    Plugins/*.pm: improve SYNOPSIS sections 
+0.18      2012-04-10 10:21:09 Europe/Rome
 
-  Change: 558de05e9dcc606ce920c9a6728d89bfa622fed2
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-15 19:14:47 +0000
+ - Fix default value for fork (GH#10) (thanks, @ioanrogers!)
+ - Switch to GitHub API v3 and discontinue token-based login
+ - Improve error handling
 
-    Meta.pm: add note about network needs 
+0.17      2012-03-29 11:40:51 Europe/Rome
 
-  Change: 4c63c7fcf9923725cc0c6a48de8560c64858130e
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-15 18:50:56 +0000
+ - Do nothing if login info is not available
+ - Improve the error message when github.user is not set (GH#9)
 
-    dist.ini: bump versioned dependency on IO::Socket::SSL (closes #14) 
+0.16      2012-03-11 15:45:47 Europe/Rome
 
------------------------------------------
-version 0.22 at 2012-06-14 18:14:22 +0000
------------------------------------------
+ - Add support for login with password and deprecate token login
 
-  Change: 61d220449581e8b6f39faf11d5c7e85bfd0c720c
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-14 20:14:22 +0000
+0.15      2012-03-07 11:34:27 Europe/Rome
 
-    Meta.pm: fix request URL for forks 
+ - GitHub::Meta now works also when offline (GH#8)
 
-  Change: b4f899911b516ee7002cfd78e673d41f207e1afd
-  Author: Mike Doherty <doherty@cs.dal.ca>
-  Date : 2012-06-14 20:08:07 +0000
+0.14      2011-12-20 18:13:00 Europe/Rome
 
-    Meta.pm: fix metadata handling for a fork's parent 
+ - Documentation fixes and improvements (no functional changes)
+ - Prompt for confirmation before creating a GitHub repo (GH#7) (thanks, @thaljef!)
+ - Check if the .git dir exists before checking for the remote
 
-  Change: cdca71f5f1332b75612e0c2d0da01f55cf943ba3
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-14 19:42:29 +0000
+0.13      2011-08-19 14:45:36 Europe/Rome
 
-    Meta.pm: minor formatting fix 
+ - Automatically point to original repo if forked (GH#5)
 
-  Change: 889f82529ba294f76ab069abc497ff5cbf48c848
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-08 15:11:44 +0000
+0.12      2011-08-13 12:55:24 Europe/Rome
 
-    gh.pm: add proper command and usage description 
+ - Check for connection errors (GH#4)
 
------------------------------------------
-version 0.21 at 2012-06-08 10:48:18 +0000
------------------------------------------
+0.11      2011-08-07 09:52:34 Europe/Rome
 
-  Change: b927651d478f5d6b40a652103d5ffdc8a05d4991
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-08 12:48:18 +0000
+ - Abort on GitHub error (GH#2)
+ - Automatically add a git remote (GH#3)
 
-    gh.pm: allow custom repository name on 'create' 
+0.10      2011-06-06 17:41:03 Europe/Rome
 
-  Change: feb4093565b21847da547a1b89343469915d3469
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-08 12:34:48 +0000
+ - Support metacpan.org URL in GitHub::Update
 
-    {Create,Update}.pm: specify that Config::Identity needs to be
-    installed for ~/.github file support 
+0.09      2011-06-03 19:30:35 Europe/Rome
 
-  Change: 79bbe38ff064bd7d17935012c345f2efc052de3c
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-07 19:11:33 +0000
+ - Documentation fixes (no functional changes)
 
-    gh.pm: minor clean-up 
+0.08      2011-05-05 17:57:07 Europe/Rome
 
-  Change: ca756b3e7128c30b07088a73f05e3729932bfeb7
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-07 19:01:51 +0000
+ - Documentation fixes and improvements (no functional changes)
 
-    gh.pm: add 'gh' command to use the plugins from the command-line 
+0.07      2011-04-24 21:20:02 Europe/Rome
 
-  Change: d54b140399fb878e6ed7f72c56c68254e9ccb103
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-07 18:17:43 +0000
+ - Make classes immutable for performance
+ - Documentation fixes (no functional changes)
 
-    Create.pm: minor clean-up 
+0.06      2011-03-13 16:33:24 Europe/Rome
 
------------------------------------------
-version 0.20 at 2012-06-06 19:15:18 +0000
------------------------------------------
+ - Force prereq on IO::Socket::SSL (needed for https GitHub URLs)
 
-  Change: ae501ebb2549634b14e8796a8ddf18cad5669a33
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-06 21:15:18 +0000
+0.05      2011-03-13 15:51:33 Europe/Rome
 
-    {Create,Update}.pm: document the Config::Identity thing 
+ - Actually implement the 'wiki' option
+ - Check if the GitHub issues tracker is used
+ - Check if the project homepage is set
 
-  Change: 9b321b10116db0fb8b1b69fa8c4540a7d3be9eb9
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-06 21:15:18 +0000
+0.04      2011-02-28 21:39:44 Europe/Rome
 
-    GitHub.pm: support Config::Identity::GitHub for retrieving
-    credentials 
+ - Fix default values for attributes
 
-  Change: 1b24c396285f69b28170fa9562f6c88edba9b793
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-06-06 20:41:19 +0000
+0.03      2011-02-28 21:18:03 Europe/Rome
 
-    Merge branch 'perl5.8-fix' of berekuk/Dist-Zilla-Plugin-GitHub 
+ - Remove 'login' and 'token' paramenters, add 'repo'
+ - Add 'homepage', 'bugs and 'wiki' parameters to GitHub::Meta
 
-  Change: 63a4c089f207f11055ceead6ccff7e9a4ba7e22e
-  Author: Vyacheslav Matyukhin <mmcleric@yandex-team.ru>
-  Date : 2012-06-06 22:08:44 +0000
+0.02      2011-02-27 19:56:39 Europe/Rome
 
-    fix GitHub::Meta plugin on perl 5.8 
+ - Add GitHub::Meta plugin
+ - Add @GitHub plugin bundle
+ - Allow for undef attributes 'login' and 'token'
 
------------------------------------------
-version 0.19 at 2012-04-16 19:08:45 +0000
------------------------------------------
+0.01      2011-02-26 15:20:39 Europe/Rome
 
-  Change: 193527529910023503f48b128da3a998d8bb58d4
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-16 21:08:45 +0000
-
-    trim trailing whitespaces 
-
-  Change: e4654fbaa6ffe861a1dd9d394ba9bb02b067bf74
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-16 21:05:47 +0000
-
-    PluginBundle/GitHub.pm: add meta_home option too 
-
-  Change: 3613309245c715f9dee27f0d1b9a1edba5741e5f
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-16 20:43:49 +0000
-
-    Update.pm: add meta_home option (closes #12) 
-
-  Change: 83ce0c56d860360d531b8befde1267985b4b7f26
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-16 20:42:05 +0000
-
-    GitHub.pm: print a new line after password request 
-
-  Change: 1af00da8c1c86da6e676c14205cfd18e2c895f41
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-16 20:00:59 +0000
-
-    minor style fixes 
-
-  Change: 7d33079274b8aca21a6126753536361e646f825a
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-16 19:58:00 +0000
-
-    GitHub.pm: improve short description 
-
------------------------------------------
-version 0.18 at 2012-04-10 10:17:48 +0000
------------------------------------------
-
-  Change: d43f115bcd76967aa1539b5434b77aa969881a8e
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-10 12:17:48 +0000
-
-    GitHub.pm: better error handling 
-
-  Change: 7db25f2fa3f49ff41d578f2e4cb0d81a23ebcaed
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-10 12:08:40 +0000
-
-    switch to GitHub API v3 and discontinue token-based login 
-
-  Change: 63ab3dfdf1cf0584fda85d433fabb460e48813ec
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-10 10:44:33 +0000
-
-    dist.ini: use Bootstrap::lib plugin 
-
-  Change: c708e234a62533504f134618440fbe8e6894f3c9
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-04-10 01:40:48 +0000
-
-    Merge pull request #10 from ioanrogers/patch-1
-
-    Wrong default for fork 
-
-  Change: 4b1255b7d03d007e1e81febb2d782f91aa1463f4
-  Author: Ioan Rogers <ioan.rogers@gmail.com>
-  Date : 2012-04-09 15:21:03 +0000
-
-    Wrong default for fork 
-
-  Change: 36f05bf26d387a987c9558808d3040de1dc3f7e2
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-29 13:50:18 +0000
-
-    Update.pm: do nothing if login value is not available 
-
------------------------------------------
-version 0.17 at 2012-03-29 11:26:19 +0000
------------------------------------------
-
-  Change: b5f2fe798357ce5a19cdfb5018bd8eb6d2fd8d4d
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-29 13:26:19 +0000
-
-    improve error message when github.user is not set (closes #9) 
-
-  Change: cfeb129935684d33ff1c7b26f1cdf785abed7b11
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-29 13:26:13 +0000
-
-    do nothing if login info is not available 
-
------------------------------------------
-version 0.16 at 2012-03-11 14:32:32 +0000
------------------------------------------
-
-  Change: 86e791a2695186dacec9d78f2bf18986c9dd3b52
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-11 15:32:32 +0000
-
-    wrap long lines and remove trailing whitespace 
-
-  Change: 6350d1855ed99b017664d6a6957fc3e9df89f193
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-11 15:23:51 +0000
-
-    Meta.pm: remove notice about GitHub token in docs 
-
-  Change: 6319c1de056e2ed1a74f726d6671b3e6989b6395
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-11 15:22:36 +0000
-
-    all: move some code to GitHub.pm 
-
-  Change: d173873fda3743d6c732522cab9fdb2afaaa777a
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-11 15:22:31 +0000
-
-    {Create,Update}.pm: add support for login with password 
-
-  Change: 7ce5d97db61cfa38861c3694a274db62e359886d
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-11 14:12:49 +0000
-
-    {Create,Update}.pm: deprecate token login 
-
-  Change: 62fd21a9bdd5c87390e562a104f3e784046bcbb7
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-07 12:36:54 +0000
-
-    PluginBundle/GitHub.pm: update attributes descriptions 
-
------------------------------------------
-version 0.15 at 2012-03-07 11:26:30 +0000
------------------------------------------
-
-  Change: 097c593ea950bc7a222e679d2db643fec5625b08
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-07 12:26:30 +0000
-
-    general clean-up 
-
-  Change: ea28e062c3404cdd6c0de468141c61423741e2c5
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-07 11:02:01 +0000
-
-    use Git::NextVersion plugin 
-
-  Change: 585bdfc7ff484ff0902e09778e4575afff762182
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2012-03-07 11:01:03 +0000
-
-    Meta.pm: work also when offline (closes #8) 
-
------------------------------------------
-version 0.14 at 2011-12-20 18:12:32 +0000
------------------------------------------
-
-  Change: 4b0a3fb70e9c1567a183933282d73b3d7371898e
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-12-20 19:12:32 +0000
-
-    bump version 
-
-  Change: 1bca62318db3a4b6b4b2b74f096e4b9245bc94b1
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-12-15 16:33:39 +0000
-
-    tweak descriptions of the plugins' options 
-
-  Change: f91b0281d69fc266420cea812bc5ff1e06b845d7
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-12-15 14:18:50 +0000
-
-    do not test for pod coverage 
-
-  Change: 54b617f9c8dca21a7473ad6eddf39be0e96c40ce
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-12-15 14:18:25 +0000
-
-    remove tests (now generated at build) 
-
-  Change: 33b8b3b1be4d0147989f66d7ec71efc5e58ace2e
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-12-15 14:17:03 +0000
-
-    check if .git dir exists before checking for the remote 
-
-  Change: bc24e42b071a4de7ac45fa5400b751f89c861984
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-12-15 05:15:16 +0000
-
-    Merge pull request #7 from thaljef/master
-
-    Added an option to prompt for confirmation before creating GitHub
-    repo 
-
-  Change: 8f7c106e7afbb45e69f8c35e7d8836b0a6772f01
-  Author: Jeffrey Ryan Thalhammer <jeff@imaginative-software.com>
-  Date : 2011-12-14 22:59:25 +0000
-
-    Prevent uninitialized warning
-
-    If not online (or GitHub is offline) the $json_text is undef, which
-    causes an 'uninitialized' warning. This commit avoids that.
-
-    Also, I found the double-negative statements to be hard to
-    understand. So I rewrote them. 
-
-  Change: 823f637ab77b955b9dd135c5d5ac4556f229177f
-  Author: Jeffrey Ryan Thalhammer <jeff@imaginative-software.com>
-  Date : 2011-12-14 22:36:03 +0000
-
-    Prompt for confirmation before creating GitHub repo.
-
-    Added an option to prompt for confirmation before creating a GitHub
-    repository. By default, this option is false. 
-
-  Change: 450199aa25e9f77da68fc0b8c486977054d8b012
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date : 2011-08-25 17:01:37 +0000
-
-    document 'metacpan' option in GitHub bundle 
-
-=================================================
-Plus 13 releases after 2011-08-21 00:00:00 +0000.
-=================================================
+ - Initial version

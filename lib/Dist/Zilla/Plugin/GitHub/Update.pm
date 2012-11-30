@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.27';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.28';
 }
 
 use strict;
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 SYNOPSIS
 
@@ -81,13 +81,12 @@ when C<dzil release> is run.
 sub release {
 	my $self	= shift;
 	my ($opts)	= @_;
-	my $repo_name	= $self -> repo ?
-				$self -> repo :
-				$self -> zilla -> name;
 	my $dist_name	= $self -> zilla -> name;
 
 	my ($login, $pass)  = $self -> _get_credentials(0);
 	return if (!$login);
+
+	my $repo_name = $self -> _get_repo_name($login);
 
 	my $http = HTTP::Tiny -> new;
 
@@ -95,7 +94,10 @@ sub release {
 
 	my ($params, $headers, $content);
 
-	$params -> {'name'} = $repo_name;
+	$repo_name =~ /\/(.*)$/;
+	my $repo_name_only = $1;
+
+	$params -> {'name'} = $repo_name_only;
 	$params -> {'description'} = $self -> zilla -> abstract;
 
 	my $meta_home = $self -> zilla -> distmeta
@@ -120,7 +122,7 @@ sub release {
 			"http://search.cpan.org/dist/$dist_name/"
 	}
 
-	my $url = $self -> api."/repos/$login/$repo_name";
+	my $url = $self -> api."/repos/$repo_name";
 
 	if ($pass) {
 		require MIME::Base64;
