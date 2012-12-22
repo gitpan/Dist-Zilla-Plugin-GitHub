@@ -1,9 +1,9 @@
 package Dist::Zilla::App::Command::gh;
 {
-  $Dist::Zilla::App::Command::gh::VERSION = '0.28';
+  $Dist::Zilla::App::Command::gh::VERSION = '0.29';
 }
 
-use v5.10;
+use feature 'switch';
 
 use strict;
 use warnings;
@@ -16,7 +16,7 @@ Dist::Zilla::App::Command::gh - Use the GitHub plugins from the command-line
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 

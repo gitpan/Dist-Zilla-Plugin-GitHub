@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
 {
-  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.28';
+  $Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.29';
 }
 
 use strict;
@@ -39,11 +39,11 @@ has 'fork' => (
 
 =head1 NAME
 
-Dist::Zilla::Plugin::GitHub::Meta - Add GitHub repo info to META.{yml,json}
+Dist::Zilla::Plugin::GitHub::Meta - Add a GitHub repo's info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -204,7 +204,8 @@ sub metadata {
 =item C<repo>
 
 The name of the GitHub repository. By default the dist name (from dist.ini)
-is used.
+is used. It can also be in the form C<user/repo> when it belongs to another
+GitHub user/organization.
 
 =item C<homepage>
 

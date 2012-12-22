@@ -5,6 +5,7 @@ META.json
 META.yml
 Makefile.PL
 README
+README.pod
 dist.ini
 lib/Dist/Zilla/App/Command/gh.pm
 lib/Dist/Zilla/Plugin/GitHub.pm

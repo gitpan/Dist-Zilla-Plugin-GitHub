@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.010000;
+
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -39,10 +39,11 @@ my %WriteMakefileArgs = (
     "Moose" => 0,
     "Term::ReadKey" => 0,
     "Try::Tiny" => 0,
+    "feature" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.28",
+  "VERSION" => "0.29",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.28';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.29';
 }
 
 use strict;
@@ -39,11 +39,11 @@ has 'meta_home' => (
 
 =head1 NAME
 
-Dist::Zilla::Plugin::GitHub::Update - Update GitHub repo info on release
+Dist::Zilla::Plugin::GitHub::Update - Update a GitHub repo's info on release
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -149,26 +149,28 @@ sub release {
 =item C<repo>
 
 The name of the GitHub repository. By default the dist name (from dist.ini)
-is used.
+is used. It can also be in the form C<user/repo> when it belongs to another
+GitHub user/organization.
 
 =item C<cpan>
 
-The GitHub homepage field will be set to the CPAN page of the module if this
-option is set to true (default),
+The GitHub homepage field will be set to the CPAN page (search.cpan.org) of the
+module if this option is set to true (default),
 
 =item C<p3rl>
 
-The GitHub homepage field will be set to the p3rl.org shortened URL (e.g.
-C<http://p3rl.org/My::Module>) if this option is set to true (default is false).
+The GitHub homepage field will be set to the p3rl.org shortened URL
+(e.g. C<http://p3rl.org/My::Module>) if this option is set to true (default is
+false).
 
-This takes precedence over the C<cpan> option (if both are true, p3rl will
-be used).
+This takes precedence over the C<cpan> option (if both are true, p3rl will be
+used).
 
 =item C<metacpan>
 
-The GitHub homepage field will be set to the metacpan.org distribution URL (e.g.
-C<http://metacpan.org/release/My-Module>) if this option is set to true (default
-is false).
+The GitHub homepage field will be set to the metacpan.org distribution URL
+(e.g. C<http://metacpan.org/release/My-Module>) if this option is set to true
+(default is false).
 
 This takes precedence over the C<cpan> and C<p3rl> options (if all three are
 true, metacpan will be used).
