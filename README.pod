@@ -7,7 +7,14 @@ use JSON;
 use Moose;
 use Try::Tiny;
 use HTTP::Tiny;
+use Git::Wrapper;
 use Class::Load qw(try_load_class);
+
+has 'remote' => (
+	is      => 'ro',
+	isa     => 'Maybe[Str]',
+	default => 'origin'
+);
 
 has 'repo' => (
 	is      => 'ro',
@@ -103,7 +110,16 @@ sub _get_credentials {
 sub _get_repo_name {
 	my ($self, $login) = @_;
 
-	my $repo = $self -> repo ? $self -> repo : $self -> zilla -> name;
+	my $repo;
+	my $git = Git::Wrapper -> new('./');
+
+	$repo = $self -> repo if $self -> repo;
+
+	my ($url) = map /Fetch URL: (.*)/, $git -> remote('show', '-n', $self -> remote);
+	$url =~ /github\.com.*\/(.*)\.git$/;
+	$repo = $1 unless $repo and not $1;
+
+	$repo = $self -> zilla -> name unless $repo;
 
 	return ($repo =~ /.*\/.*/ ? $repo : "$login/$repo");
 }

@@ -31,7 +31,9 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::MetaProvider" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "Dist::Zilla::Role::Releaser" => 0,
+    "Dist::Zilla::Role::TextTemplate" => 0,
     "File::Basename" => 0,
+    "Git::Wrapper" => 0,
     "HTTP::Tiny" => 0,
     "IO::Socket::SSL" => "1.56",
     "JSON" => 0,
@@ -43,7 +45,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.29",
+  "VERSION" => "0.30",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.29';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.30';
 }
 
 use strict;
@@ -8,11 +8,14 @@ use warnings;
 
 use JSON;
 use Moose;
+use Try::Tiny;
+use Git::Wrapper;
 use File::Basename;
 
 extends 'Dist::Zilla::Plugin::GitHub';
 
 with 'Dist::Zilla::Role::AfterMint';
+with 'Dist::Zilla::Role::TextTemplate';
 
 has 'public' => (
 	is	=> 'ro',
@@ -20,16 +23,10 @@ has 'public' => (
 	default	=> 1
 );
 
-has 'remote' => (
-	is	=> 'ro',
-	isa	=> 'Str',
-	default	=> 'origin'
-);
-
 has 'prompt' => (
-        is	=> 'ro',
-        isa	=> 'Bool',
-        default	=> 0
+	is	=> 'ro',
+	isa	=> 'Bool',
+	default	=> 0
 );
 
 =head1 NAME
@@ -38,7 +35,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create a new GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 SYNOPSIS
 
@@ -64,6 +61,10 @@ then, in your F<profile.ini>:
     [GitHub::Create]
     public = 0
 
+    # use a template for the repository name
+    [GitHub::Create]
+    repo = {{ lc $dist -> name }}
+
 See L</ATTRIBUTES> for more options.
 
 =head1 DESCRIPTION
@@ -80,11 +81,21 @@ sub after_mint {
 	my $self	= shift;
 	my ($opts)	= @_;
 
-	my $root = $opts -> {'mint_root'};
-
 	return if $self -> prompt and not $self -> _confirm;
 
-	my $repo_name = $opts -> {'repo'} || basename($root);
+	my $root = $opts -> {'mint_root'};
+
+	my $repo_name;
+
+	if ($opts -> {'repo'}) {
+		$repo_name = $opts -> {'repo'};
+	} elsif ($self -> repo) {
+		$repo_name = $self -> fill_in_string(
+			$self -> repo, { dist => \($self->zilla) },
+		);
+	} else {
+		$repo_name = $self -> zilla -> name;
+	}
 
 	my ($login, $pass)  = $self -> _get_credentials(0);
 
@@ -120,15 +131,27 @@ sub after_mint {
 	my $git_dir = "$root/.git";
 	my $rem_ref = $git_dir."/refs/remotes/".$self -> remote;
 
-	if ((-d $git_dir) && (!-d $rem_ref)) {
-		my $ssh_url = $repo -> {'ssh_url'};
+	if ((-d $git_dir) && (not -d $rem_ref)) {
+		my $git = Git::Wrapper -> new($root);
 
 		$self -> log("Setting GitHub remote '".$self -> remote."'");
+		$git -> remote("add", $self -> remote, $repo -> {'ssh_url'});
 
-		system(
-			"git", "--git-dir=$git_dir", "remote", "add",
-			$self -> remote, $ssh_url
+		my ($branch) = $git -> rev_parse(
+			{ abbrev_ref => 1, symbolic_full_name => 1 }, 'HEAD'
 		);
+
+		if ($branch) {
+			try {
+				$git -> config("branch.$branch.merge");
+				$git -> config("branch.$branch.remote");
+			} catch {
+				$self -> log("Setting up remote tracking for branch '$branch'.");
+
+				$git -> config("branch.$branch.merge", "refs/heads/$branch");
+				$git -> config("branch.$branch.remote", $self -> remote);
+			};
+		}
 	}
 }
 
@@ -144,6 +167,14 @@ sub _confirm {
 =head1 ATTRIBUTES
 
 =over
+
+=item C<repo>
+
+Specifies the name of the GitHub repository to be created (by default the name
+of the dist is used). This can be a template, so something like the following
+will work:
+
+    repo = {{ lc $dist -> name }}
 
 =item C<prompt>
 
@@ -185,7 +216,15 @@ C<GitHub::Create> plugin, as follows:
     [GitHub::Create]
     remote = myremote
 
-Remember to put C<[Git::Init]> B<before> C<[GitHub::Create]>.
+Remember to put C<[Git::Init]> B<before> C<[GitHub::Create]>. After the new
+remote is added, the current branch will track it, unless remote tracking for
+the branch was already set.
+
+This may allow one to use the L<Dist::Zilla::Plugin::Git::Push> plugin without
+the need to do a C<git push> between the C<dzil new> and C<dzil release>. Note
+though that this will work only when the C<push.default> Git configuration
+option is set to either C<upstream> or C<simple> (which will be the default in
+Git 2.0).
 
 =head1 AUTHOR
 

@@ -33,7 +33,9 @@
             "Dist::Zilla::Role::MetaProvider" : "0",
             "Dist::Zilla::Role::PluginBundle::Easy" : "0",
             "Dist::Zilla::Role::Releaser" : "0",
+            "Dist::Zilla::Role::TextTemplate" : "0",
             "File::Basename" : "0",
+            "Git::Wrapper" : "0",
             "HTTP::Tiny" : "0",
             "IO::Socket::SSL" : "1.56",
             "JSON" : "0",
@@ -66,7 +68,7 @@
          "web" : "https://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub"
       }
    },
-   "version" : "0.29",
+   "version" : "0.30",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.014002"
