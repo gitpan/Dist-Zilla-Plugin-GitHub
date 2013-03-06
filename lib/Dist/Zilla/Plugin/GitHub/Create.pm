@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.30';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.31';
 }
 
 use strict;
@@ -35,7 +35,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create a new GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 
@@ -137,9 +137,9 @@ sub after_mint {
 		$self -> log("Setting GitHub remote '".$self -> remote."'");
 		$git -> remote("add", $self -> remote, $repo -> {'ssh_url'});
 
-		my ($branch) = $git -> rev_parse(
+		my ($branch) = try { $git -> rev_parse(
 			{ abbrev_ref => 1, symbolic_full_name => 1 }, 'HEAD'
-		);
+		) };
 
 		if ($branch) {
 			try {
@@ -224,7 +224,8 @@ This may allow one to use the L<Dist::Zilla::Plugin::Git::Push> plugin without
 the need to do a C<git push> between the C<dzil new> and C<dzil release>. Note
 though that this will work only when the C<push.default> Git configuration
 option is set to either C<upstream> or C<simple> (which will be the default in
-Git 2.0).
+Git 2.0). If you are using an older Git or don't want to change your config,
+you may want to have a look at L<Dist::Zilla::Plugin::Git::PushInitial>.
 
 =head1 AUTHOR
 

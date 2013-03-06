@@ -1,6 +1,6 @@
 package Dist::Zilla::App::Command::gh;
 {
-  $Dist::Zilla::App::Command::gh::VERSION = '0.30';
+  $Dist::Zilla::App::Command::gh::VERSION = '0.31';
 }
 
 use feature 'switch';
@@ -16,7 +16,7 @@ Dist::Zilla::App::Command::gh - Use the GitHub plugins from the command-line
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 
