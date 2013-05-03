@@ -1,9 +1,7 @@
 package Dist::Zilla::App::Command::gh;
 {
-  $Dist::Zilla::App::Command::gh::VERSION = '0.32';
+  $Dist::Zilla::App::Command::gh::VERSION = '0.33';
 }
-
-use feature 'switch';
 
 use strict;
 use warnings;
@@ -16,7 +14,7 @@ Dist::Zilla::App::Command::gh - Use the GitHub plugins from the command-line
 
 =head1 VERSION
 
-version 0.32
+version 0.33
 
 =head1 SYNOPSIS
 
@@ -48,32 +46,28 @@ sub execute {
 	$_ -> gather_files for
 		@{ $zilla -> plugins_with(-FileGatherer) };
 
-	given ($arg -> [0]) {
-		when ('create') {
-			require Dist::Zilla::Dist::Minter;
+	if ($arg -> [0] eq 'create') {
+		require Dist::Zilla::Dist::Minter;
 
-			my $minter = Dist::Zilla::Dist::Minter
-				-> _new_from_profile(
-				[ $opt -> provider, $opt -> profile ], {
-					chrome => $self -> app -> chrome,
-					name   => $zilla -> name,
-				},
-			);
+		my $minter = Dist::Zilla::Dist::Minter
+			-> _new_from_profile(
+			[ $opt -> provider, $opt -> profile ], {
+				chrome => $self -> app -> chrome,
+				name   => $zilla -> name,
+			},
+		);
 
-			my $create = _find_plug($minter, 'GitHub::Create');
-			my $root   = `pwd`; chomp $root;
-			my $repo   = $arg -> [1];
+		my $create = _find_plug($minter, 'GitHub::Create');
+		my $root   = `pwd`; chomp $root;
+		my $repo   = $arg -> [1];
 
-			$create -> after_mint({
-				mint_root => $root,
-				repo      => $repo,
-				descr     => $zilla -> abstract
-			});
-		}
-
-		when ('update') {
-			_find_plug($zilla, 'GitHub::Update') -> release;
-		}
+		$create -> after_mint({
+			mint_root => $root,
+			repo      => $repo,
+			descr     => $zilla -> abstract
+		});
+	} elsif ($arg -> [0] eq 'create') {
+		_find_plug($zilla, 'GitHub::Update') -> release;
 	}
 }
 

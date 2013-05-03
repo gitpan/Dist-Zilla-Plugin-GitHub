@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.32';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.33';
 }
 
 use strict;
@@ -35,7 +35,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create a new GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.32
+version 0.33
 
 =head1 SYNOPSIS
 
@@ -216,16 +216,16 @@ C<GitHub::Create> plugin, as follows:
     [GitHub::Create]
     remote = myremote
 
-Remember to put C<[Git::Init]> B<before> C<[GitHub::Create]>. After the new
-remote is added, the current branch will track it, unless remote tracking for
-the branch was already set.
+Remember to put C<[Git::Init]> B<before> C<[GitHub::Create]>.
 
-This may allow one to use the L<Dist::Zilla::Plugin::Git::Push> plugin without
-the need to do a C<git push> between the C<dzil new> and C<dzil release>. Note
-though that this will work only when the C<push.default> Git configuration
-option is set to either C<upstream> or C<simple> (which will be the default in
-Git 2.0). If you are using an older Git or don't want to change your config,
-you may want to have a look at L<Dist::Zilla::Plugin::Git::PushInitial>.
+After the new remote is added, the current branch will track it, unless remote
+tracking for the branch was already set. This may allow one to use the
+L<Dist::Zilla::Plugin::Git::Push> plugin without the need to do a C<git push>
+between the C<dzil new> and C<dzil release>. Note though that this will work
+only when the C<push.default> Git configuration option is set to either
+C<upstream> or C<simple> (which will be the default in Git 2.0). If you are
+using an older Git or don't want to change your config, you may want to have a
+look at L<Dist::Zilla::Plugin::Git::PushInitial>.
 
 =head1 AUTHOR
 
