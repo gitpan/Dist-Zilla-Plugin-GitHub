@@ -67,7 +67,7 @@
          "web" : "https://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub"
       }
    },
-   "version" : "0.33",
+   "version" : "0.34",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.014002"

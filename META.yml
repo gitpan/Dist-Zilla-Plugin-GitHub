@@ -39,7 +39,7 @@ resources:
   bugtracker: https://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub/issues
   homepage: http://metacpan.org/release/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub.git
-version: 0.33
+version: 0.34
 x_Dist_Zilla:
   perl:
     version: 5.014002
