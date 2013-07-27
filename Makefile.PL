@@ -24,9 +24,9 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::App" => 0,
     "Dist::Zilla::Dist::Minter" => 0,
     "Dist::Zilla::Role::AfterMint" => 0,
+    "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::MetaProvider" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
-    "Dist::Zilla::Role::Releaser" => 0,
     "Dist::Zilla::Role::TextTemplate" => 0,
     "File::Basename" => 0,
     "Git::Wrapper" => 0,
@@ -45,7 +45,7 @@ my %WriteMakefileArgs = (
     "File::Temp" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.34",
+  "VERSION" => "0.35",
   "test" => {
     "TESTS" => "t/*.t"
   }

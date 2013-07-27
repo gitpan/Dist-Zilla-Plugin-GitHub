@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Update;
 {
-  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.34';
+  $Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.35';
 }
 
 use strict;
@@ -11,7 +11,7 @@ use Moose;
 
 extends 'Dist::Zilla::Plugin::GitHub';
 
-with 'Dist::Zilla::Role::Releaser';
+with 'Dist::Zilla::Role::AfterRelease';
 
 has 'cpan' => (
 	is	=> 'ro',
@@ -43,7 +43,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update a GitHub repo's info on release
 
 =head1 VERSION
 
-version 0.34
+version 0.35
 
 =head1 SYNOPSIS
 
@@ -78,7 +78,7 @@ when C<dzil release> is run.
 
 =cut
 
-sub release {
+sub after_release {
 	my $self	= shift;
 	my ($opts)	= @_;
 	my $dist_name	= $self -> zilla -> name;

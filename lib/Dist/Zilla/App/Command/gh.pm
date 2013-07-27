@@ -1,6 +1,6 @@
 package Dist::Zilla::App::Command::gh;
 {
-  $Dist::Zilla::App::Command::gh::VERSION = '0.34';
+  $Dist::Zilla::App::Command::gh::VERSION = '0.35';
 }
 
 use strict;
@@ -14,7 +14,7 @@ Dist::Zilla::App::Command::gh - Use the GitHub plugins from the command-line
 
 =head1 VERSION
 
-version 0.34
+version 0.35
 
 =head1 SYNOPSIS
 
@@ -67,7 +67,7 @@ sub execute {
 			descr     => $zilla -> abstract
 		});
 	} elsif ($arg -> [0] eq 'update') {
-		_find_plug($zilla, 'GitHub::Update') -> release;
+		_find_plug($zilla, 'GitHub::Update') -> after_release;
 	}
 }
 
