@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub::Create;
 {
-  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.35';
+  $Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.36';
 }
 
 use strict;
@@ -53,7 +53,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create a new GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.35
+version 0.36
 
 =head1 SYNOPSIS
 
@@ -119,7 +119,7 @@ sub after_mint {
 
 	my $http = HTTP::Tiny -> new;
 
-	$self -> log("Creating new GitHub repository '$repo_name'");
+	$self -> log([ "Creating new GitHub repository '%s'", $repo_name ]);
 
 	my ($params, $headers, $content);
 
@@ -164,7 +164,7 @@ sub after_mint {
 	if ((-d $git_dir) && (not -d $rem_ref)) {
 		my $git = Git::Wrapper -> new($root);
 
-		$self -> log("Setting GitHub remote '".$self -> remote."'");
+		$self -> log([ "Setting GitHub remote '%s'", $self -> remote ]);
 		$git -> remote("add", $self -> remote, $repo -> {'ssh_url'});
 
 		my ($branch) = try { $git -> rev_parse(
@@ -176,7 +176,7 @@ sub after_mint {
 				$git -> config("branch.$branch.merge");
 				$git -> config("branch.$branch.remote");
 			} catch {
-				$self -> log("Setting up remote tracking for branch '$branch'.");
+				$self -> log([ "Setting up remote tracking for branch '%s'", $branch ]);
 
 				$git -> config("branch.$branch.merge", "refs/heads/$branch");
 				$git -> config("branch.$branch.remote", $self -> remote);

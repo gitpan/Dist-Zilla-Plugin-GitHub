@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GitHub;
 {
-  $Dist::Zilla::Plugin::GitHub::VERSION = '0.35';
+  $Dist::Zilla::Plugin::GitHub::VERSION = '0.36';
 }
 
 use strict;
@@ -36,7 +36,7 @@ Dist::Zilla::Plugin::GitHub - Plugins to integrate Dist::Zilla with GitHub
 
 =head1 VERSION
 
-version 0.35
+version 0.36
 
 =head1 DESCRIPTION
 
@@ -152,6 +152,12 @@ sub _check_response {
 
 		return $json_text;
 	} catch {
+		if ($response and !$response -> {'success'} and $response -> {'status'} eq '599') {
+		    #possibly HTTP::Tiny error
+			$self -> log("Err: ", $response -> {'content'});
+			return;
+		}
+
 		$self -> log("Err: Can't connect to GitHub");
 
 		return;
