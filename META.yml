@@ -41,7 +41,7 @@ resources:
   bugtracker: https://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub/issues
   homepage: http://metacpan.org/release/Dist-Zilla-Plugin-GitHub/
   repository: git://github.com/ghedo/p5-Dist-Zilla-Plugin-GitHub.git
-version: '0.37'
+version: '0.38'
 x_Dist_Zilla:
   perl:
     version: '5.018002'
@@ -186,7 +186,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: v0.37
+          tag: v0.38
           tag_format: v%v
           tag_message: '%N %v'
           time_zone: local

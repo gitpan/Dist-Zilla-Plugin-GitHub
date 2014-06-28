@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::GitHub::Update;
-$Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.37';
+$Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.38';
 use strict;
 use warnings;
 
@@ -40,7 +40,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update a GitHub repo's info on release
 
 =head1 VERSION
 
-version 0.37
+version 0.38
 
 =head1 SYNOPSIS
 
@@ -145,7 +145,7 @@ sub after_release {
 	if ($repo eq 'redo') {
 		$self -> log("Retrying with two-factor authentication");
 		$self -> prompt_2fa(1);
-		$repo = $self -> after_release(@$opts);
+		$repo = $self -> after_release($opts);
 	}
 
 	return if not $repo;
