@@ -1,9 +1,9 @@
 package Dist::Zilla::Plugin::GitHub::Update;
-$Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.38';
+$Dist::Zilla::Plugin::GitHub::Update::VERSION = '0.39';
 use strict;
 use warnings;
 
-use JSON;
+use JSON::MaybeXS;
 use Moose;
 
 extends 'Dist::Zilla::Plugin::GitHub';
@@ -40,7 +40,7 @@ Dist::Zilla::Plugin::GitHub::Update - Update a GitHub repo's info on release
 
 =head1 VERSION
 
-version 0.38
+version 0.39
 
 =head1 SYNOPSIS
 
@@ -133,7 +133,7 @@ sub after_release {
 		$self -> log([ "Using two-factor authentication" ]);
 	}
 
-	$content = to_json $params;
+	$content = encode_json($params);
 
 	my $response = $http -> request('PATCH', $url, {
 		content => $content,
@@ -142,13 +142,14 @@ sub after_release {
 
 	my $repo = $self -> _check_response($response);
 
+	return if not $repo;
+
 	if ($repo eq 'redo') {
 		$self -> log("Retrying with two-factor authentication");
 		$self -> prompt_2fa(1);
 		$repo = $self -> after_release($opts);
+		return if not $repo;
 	}
-
-	return if not $repo;
 }
 
 =head1 ATTRIBUTES

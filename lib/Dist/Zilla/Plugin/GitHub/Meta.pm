@@ -1,9 +1,9 @@
 package Dist::Zilla::Plugin::GitHub::Meta;
-$Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.38';
+$Dist::Zilla::Plugin::GitHub::Meta::VERSION = '0.39';
 use strict;
 use warnings;
 
-use JSON;
+use JSON::MaybeXS;
 use Moose;
 
 extends 'Dist::Zilla::Plugin::GitHub';
@@ -40,7 +40,7 @@ Dist::Zilla::Plugin::GitHub::Meta - Add a GitHub repo's info to META.{yml,json}
 
 =head1 VERSION
 
-version 0.38
+version 0.39
 
 =head1 SYNOPSIS
 
@@ -137,7 +137,7 @@ sub metadata {
 
 	$self -> log("Using offline repository information") if $offline;
 
-	if (!$offline && $repo->{'fork'} == JSON::true() && $self->fork == 1) {
+	if (!$offline && $repo->{'fork'} == JSON->true() && $self->fork == 1) {
 		my $parent   = $repo -> {'parent'} -> {'full_name'};
 		my $url      = $self -> api.'/repos/'.$parent;
 		my $response = $http -> request('GET', $url);
@@ -158,11 +158,11 @@ sub metadata {
 
 	$homepage = $offline ? undef : $repo -> {'homepage'};
 
-	if (!$offline && $repo -> {'has_issues'} == JSON::true()) {
+	if (!$offline && $repo -> {'has_issues'} == JSON->true()) {
 		$bugtracker = "$html_url/issues";
 	}
 
-	if (!$offline && $repo -> {'has_wiki'} == JSON::true()) {
+	if (!$offline && $repo -> {'has_wiki'} == JSON->true()) {
 		$wiki = "$html_url/wiki";
 	}
 

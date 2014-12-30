@@ -1,9 +1,9 @@
 package Dist::Zilla::Plugin::GitHub::Create;
-$Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.38';
+$Dist::Zilla::Plugin::GitHub::Create::VERSION = '0.39';
 use strict;
 use warnings;
 
-use JSON;
+use JSON::MaybeXS;
 use Moose;
 use Try::Tiny;
 use Git::Wrapper;
@@ -55,7 +55,7 @@ Dist::Zilla::Plugin::GitHub::Create - Create a new GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.38
+version 0.39
 
 =head1 SYNOPSIS
 
@@ -157,7 +157,7 @@ sub after_mint {
 		$self -> log([ "Using two-factor authentication" ]);
 	}
 
-	$content = to_json $params;
+	$content = encode_json($params);
 
 	my $response = $http -> request('POST', $url, {
 		content => $content,
@@ -166,13 +166,14 @@ sub after_mint {
 
 	my $repo = $self -> _check_response($response);
 
+	return if not $repo;
+
 	if ($repo eq 'redo') {
 		$self -> log("Retrying with two-factor authentication");
 		$self -> prompt_2fa(1);
 		$repo = $self -> after_mint($opts);
+		return if not $repo;
 	}
-
-	return if not $repo;
 
 	my $git_dir = "$root/.git";
 	my $rem_ref = $git_dir."/refs/remotes/".$self -> remote;

@@ -1,9 +1,9 @@
 package Dist::Zilla::Plugin::GitHub;
-$Dist::Zilla::Plugin::GitHub::VERSION = '0.38';
+$Dist::Zilla::Plugin::GitHub::VERSION = '0.39';
 use strict;
 use warnings;
 
-use JSON;
+use JSON::MaybeXS;
 use Moose;
 use Try::Tiny;
 use HTTP::Tiny;
@@ -39,7 +39,7 @@ Dist::Zilla::Plugin::GitHub - Plugins to integrate Dist::Zilla with GitHub
 
 =head1 VERSION
 
-version 0.38
+version 0.39
 
 =head1 DESCRIPTION
 
@@ -149,7 +149,7 @@ sub _check_response {
 	my ($self, $response) = @_;
 
 	try {
-		my $json_text = from_json $response -> {'content'};
+		my $json_text = decode_json($response) -> {'content'};
 
 		if (!$response -> {'success'}) {
 			return 'redo' if (($response -> {'status'} eq '401') and
